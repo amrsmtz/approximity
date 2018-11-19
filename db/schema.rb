@@ -10,9 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2018_11_19_214616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "businesses", force: :cascade do |t|
+    t.string "place_id"
+    t.string "name"
+    t.string "address"
+    t.string "type"
+    t.text "description"
+    t.integer "ratings"
+    t.time "openinghour"
+    t.time "closinghour"
+    t.text "reviews"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "journey_businesses", force: :cascade do |t|
+    t.bigint "journey_id"
+    t.bigint "business_id"
+    t.integer "order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["business_id"], name: "index_journey_businesses_on_business_id"
+    t.index ["journey_id"], name: "index_journey_businesses_on_journey_id"
+  end
+
+  create_table "journeys", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "journey_businesses", "businesses"
+  add_foreign_key "journey_businesses", "journeys"
 end
