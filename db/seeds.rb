@@ -5,6 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts "destroying Db"
+Business.destroy_all
+
 
 parameters = "key=#{ENV['API_PLACES_KEY']}"
 bakery = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=bakery+in+montreal&#{parameters}"
@@ -31,34 +34,52 @@ drycleanerid = JSON.parse(drycleaner_serialized)
  ids << result["place_id"]
 end
 
-ids.first(1).each do |id|
+ids.each do |id|
   details_url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=#{id}&#{parameters}"
   details_serialized = open(details_url).read
   details = JSON.parse(details_serialized)["result"]
 
-  name = details["name"]
-  shortaddress = details["vicinity"]
-  longaddress = details["formatted_address"]
-  phone = details["formatted_phone_number"]
-  ratings = details["rating"]
-  hours = details["opening_hours"]["weekday_text"]
-  type = details["types"][0]
-  website = details["website"]
-  p price_level = details["price_level"]
-  latitude = details["geometry"]["location"]["lat"]
-  longitude = details["geometry"]["location"]["lng"]
+  begin
+    name = details["name"]
+    shortaddress = details["vicinity"]
+    longaddress = details["formatted_address"]
+    phone = details["formatted_phone_number"]
+    ratings = details["rating"]
+    hours = details["opening_hours"]["weekday_text"]
+    category = details["types"][0]
+    website = details["website"]
+    price_level = details["price_level"]
+    latitude = details["geometry"]["location"]["lat"]
+    longitude = details["geometry"]["location"]["lng"]
 
-  # business = Business.create(....)
+    business = Business.create!(
+      name: name,
+      shortaddress: shortaddress,
+      longaddress: longaddress,
+      phone: phone,
+      ratings: ratings,
+      hours: hours,
+      category: category,
+      website: website,
+      price_level: price_level,
+      latitude: latitude,
+      longitude: longitude,
+      )
 
-  all_review = details["reviews"]
-  all_review.first(3).each do |review|
-    note = review["rating"]
-    text = review["text"]
-    # Review.create!(...., business: business)
+    three_reviews = details["reviews"]
+    three_reviews.first(5).each do |review|
+      rating = review["rating"]
+      text = review["text"]
+      Review.create!(rating: rating,
+                     business: business,
+                     content: text,
+                     )
+    end
+  rescue NoMethodError
+    puts "missing data"
   end
-
-
 end
+
 
 
 # storedb = []

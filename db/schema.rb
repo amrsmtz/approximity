@@ -10,15 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_20_210423) do
+ActiveRecord::Schema.define(version: 2018_11_20_222252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "businesses", force: :cascade do |t|
     t.string "name"
-    t.string "type"
-    t.integer "ratings"
+    t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "latitude"
@@ -29,6 +28,7 @@ ActiveRecord::Schema.define(version: 2018_11_20_210423) do
     t.string "phone"
     t.string "hours"
     t.string "website"
+    t.float "ratings"
   end
 
   create_table "journey_businesses", force: :cascade do |t|
@@ -46,6 +46,16 @@ ActiveRecord::Schema.define(version: 2018_11_20_210423) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.text "content"
+    t.bigint "business_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["business_id"], name: "index_reviews_on_business_id"
+  end
+
   add_foreign_key "journey_businesses", "businesses"
   add_foreign_key "journey_businesses", "journeys"
+  add_foreign_key "reviews", "businesses"
 end
