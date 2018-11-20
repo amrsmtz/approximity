@@ -1,0 +1,14 @@
+<div class="banner">
+  <div class="banner-search">
+    <h1>Approximity</h1>
+    <h2>SHOP LOCAL AT SMALL BUSINESSES IN YOUR NEIGHBORHOOD</h2>
+    <%= form_tag root_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a movie"
+      %>
+    <% end %>
+    <div class="invisible-box"></div>
+  </div>
+</div>
