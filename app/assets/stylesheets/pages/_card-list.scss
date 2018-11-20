@@ -1,0 +1,46 @@
+.card-list {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  position: relative;
+}
+.card-list-image {
+  background-image: url('business.jpg');
+  width: 90px;
+  height: 90px;
+  background-size: cover;
+}
+.card-list-content {
+  width: 80%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  h1 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+  }
+  p {
+    margin: 0;
+    color: #838383;
+  }
+}
+.card-list-rating {
+  color: #E77131;
+  display: flex;
+  align-items: center;
+  p {
+    color: #E77131;
+    margin: 0;
+  }
+  #card-list-rating-number {
+    color: #838383;
+    padding-left: 10px;
+  }
+}
+.card-list-content-inline {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
