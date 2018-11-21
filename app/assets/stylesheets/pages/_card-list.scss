@@ -9,6 +9,7 @@
   width: 90px;
   height: 90px;
   background-size: cover;
+  border-radius: 50%;
 }
 .card-list-content {
   width: 80%;
@@ -25,6 +26,12 @@
     font-size: 12px;
     margin: 0;
     color: #838383;
+  }
+  a {
+    color: #4a4a4a;
+  }
+  a:hover {
+    color: #FF2424;
   }
 }
 .card-list-rating {
