@@ -1,0 +1,13 @@
+<% number = business.ratings  %>
+
+<% while number > 0 %>
+  <% if number >= 1 %>
+    <i class="fas fa-star"></i>
+  <% elsif number >= 0.21 && number < 0.71 %>
+    <i class="fas fa-star-half"></i>
+  <% elsif number >= 0.79 %>
+    <i class="fas fa-star"></i>
+  <% end %>
+
+  <% number -= 1 %>
+<% end %>
