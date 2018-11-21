@@ -25,9 +25,9 @@
       <%= truncate(business.reviews.first.content, length: 70) %>
     </p>
     <div class="card-action">
-      <a href="" class="btn primary-button">ADD</a>
-      <a href="" id="map-button" class="btn secondary-button" data-toggle="modal" data-target="#myModal">DETAILS</a>
-      <%= render "components/info_modal" %>
+      <a href="#" class="btn primary-button">ADD</a>
+      <a href="#" id="map-button" class="btn secondary-button" data-toggle="modal" data-target="#<%=business.id %>">DETAILS</a>
+      <%= render "components/info_modal", {business: business} %>
     </div>
   </div>
 </div>
