@@ -5,6 +5,7 @@
 .search-business {
   width: 70%;
   padding: 30px;
+  background-color: white;
 }
 .search-business-cards {
   display: flex;
@@ -20,4 +21,9 @@
   input {
     margin-bottom: 10px;
   }
+}
+.form-control {
+  background-color: #E1E1E1;
+  border: none;
+  box-shadow: none;
 }

@@ -35,12 +35,12 @@
   }
 }
 .card-list-rating {
-  color: #E77131;
+  color: $yellow;
   display: flex;
   align-items: center;
   font-size: 12px;
   p {
-    color: #E77131;
+    color: $yellow;
     margin: 0;
   }
   #card-list-rating-number {
