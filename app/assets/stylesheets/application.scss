@@ -13,31 +13,3 @@
 @import "layouts/index";
 @import "components/index";
 @import "pages/index";
-@import "pages/banner";
-@import "pages/card";
-@import "pages/card-list";
-
-//Buttons
-.button-call-to-action {
-  background: #FF2424;
-  color: white;
-}
-.button-call-to-action:hover {
-  background: rgba(255, 0, 0, 0.6);
-  color: white;
-}
-.primary-button {
-  border: 2px solid #FF2424;
-  border-radius: 2px;
-  color: #FF2424;
-}
-.primary-button:hover {
-  background: #FF2424;
-  color: white;
-}
-.secondary-button {
-  color: #4A4A4A;
-}
-.secondary-button:hover {
-  color: #FF2424;
-}
