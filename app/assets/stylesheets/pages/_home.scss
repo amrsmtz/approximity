@@ -9,7 +9,8 @@
 .search-business-cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
+  padding-top: 30px;
 }
 .list-business {
   width: 30%;

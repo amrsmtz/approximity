@@ -1,4 +1,4 @@
-.banner {
+.landing-banner {
   background-image: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.4)), url(banner.jpg);
   background-size: cover;
   height: 100vh;
@@ -25,7 +25,17 @@
   form {
     width: 70%;
   }
+  span {
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    margin-bottom: 70px;
+    padding-right: 10px;
+  }
 }
 .invisible-box {
   height: 100px;
+}
+.element-inline {
+  display: flex;
 }

@@ -8,7 +8,7 @@
       <%= text_field_tag :query,
         params[:query],
         class: "form-control",
-        placeholder: "Find a business"
+        placeholder: "Find a business to add to the journey"
       %>
     <% end %>
     <div class="search-business-cards">
@@ -25,14 +25,14 @@
       <%= text_field_tag :query,
         params[:query],
         class: "form-control",
-        placeholder: "Find a business"
+        placeholder: "Start location"
       %>
     <% end %>
     <%= form_tag root_path, method: :get do %>
       <%= text_field_tag :query,
         params[:query],
         class: "form-control",
-        placeholder: "Find a business"
+        placeholder: "End location"
       %>
     <% end %>
     <%= render 'card-list' %>
