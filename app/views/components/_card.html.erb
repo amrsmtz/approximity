@@ -16,17 +16,24 @@
   <div class="card-content">
     <h1><%= business.name %></h1>
     <div class="card-rating">
-    <%= render 'components/stars', business: business %>
+      <%= render 'components/stars', business: business %>
       <p><%= business.ratings %></p>
-      <p id='card-rating-number'></p>
     </div>
-    <p><%= business.phone %> • <%= business.shortaddress.chomp(", Montréal") %></p>
-    <p id="card-description">
+    <div class="card-info">
+      <p>
+        <%= business.phone %> • <%= business.shortaddress.chomp(", Montréal") %>
+      </p>
+    </div>
+    <p class="card-description">
       <%= truncate(business.reviews.first.content, length: 70) %>
     </p>
     <div class="card-action">
-      <a href="#" class="btn primary-button">ADD</a>
-      <a href="#" id="map-button" class="btn secondary-button" data-toggle="modal" data-target="#<%=business.id %>">DETAILS</a>
+      <a href="#" class="btn primary-button">
+        ADD
+      </a>
+      <a href="#" id="map-button" class="btn secondary-button" data-toggle="modal" data-target="#<%=business.id %>">
+        DETAILS
+      </a>
       <%= render "components/info_modal", {business: business} %>
     </div>
   </div>
