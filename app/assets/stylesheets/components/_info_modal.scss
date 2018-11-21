@@ -1,4 +1,6 @@
-
+.info-modal {
+  position: relative;
+}
 
 .tiny_card {
   position: relative;
@@ -12,4 +14,10 @@
   line-height: 22px;
   align-items: center;
   color: #4A4A4A;
+}
+
+.modal-button {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
 }
