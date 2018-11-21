@@ -1,2 +1,45 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<!-- Banner -->
+<%= render 'banner' %>
+
+<!-- Search -->
+<div class="wrapper">
+  <div class="search-business">
+    <%= form_tag root_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a business to add to the journey"
+      %>
+    <% end %>
+    <div class="search-business-cards">
+      <%= render 'card' %>
+      <%= render 'card' %>
+      <%= render 'card' %>
+      <%= render 'card' %>
+      <%= render 'card' %>
+      <%= render 'card' %>
+    </div>
+  </div>
+  <div class="list-business">
+    <%= form_tag root_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Start location"
+      %>
+    <% end %>
+    <%= form_tag root_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "End location"
+      %>
+    <% end %>
+    <%= render 'card-list' %>
+    <%= render 'card-list' %>
+    <%= render 'card-list' %>
+    <a href="" class="btn button-call-to-action center-block" style="margin-top: 30px; width: 130px">
+      GO TO MAP
+    </a>
+  </div>
+</div>
