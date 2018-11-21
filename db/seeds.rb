@@ -39,7 +39,7 @@ ids.each do |id|
   details_serialized = open(details_url).read
   details = JSON.parse(details_serialized)["result"]
 
-  begin
+    begin
     name = details["name"]
     shortaddress = details["vicinity"]
     longaddress = details["formatted_address"]
