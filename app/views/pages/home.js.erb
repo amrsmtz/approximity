@@ -1,0 +1,21 @@
+var businessesHTML = "";
+
+<% @businesses.each do |business|%>
+businessesHTML= businessesHTML + "<%= j(render 'components/card', business: business) %>"
+<% end %>
+
+var businessCards = document.getElementById('business-cards')
+businessCards.innerHTML = businessesHTML
+
+
+var banner = document.querySelector(".landing-banner");
+
+if (banner !== null) {
+  window.scrollTo({ top: window.innerHeight, behavior: "smooth" })
+
+  setTimeout(() => {
+    document.querySelector(".landing-banner").remove();
+  }, 500)
+}
+
+
