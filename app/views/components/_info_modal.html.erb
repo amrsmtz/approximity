@@ -1,19 +1,5 @@
-<head>
-  <title>Playing with modals</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
-
-<div class="container">
-  <!-- Trigger the modal with a button -->
-  <button type="button" id="map-button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">More Info</button>
-
   <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+  <div class="modal fade" id="<%=business.id %>" role="dialog">
     <div class="modal-dialog modal-lg">
     
       <!-- Modal content-->
@@ -23,26 +9,27 @@
         </div>
         <div class="row">
           <div class="col-xs-3">
-              <div class="tiny_card">
-                <div class="image"><img src="https://picsum.photos/200"></div>
-                <div class="times"> TIMES TIMES TIMES TIMES TIMES TIMES TIMES TIMES TIMES TIMES TIMES TIMES TIMES</div>
+            <div class="tiny_card">
+              <div class="image"><img src="https://picsum.photos/200"></div>
+              <%= render "components/hours_table" %>
             </div>
           </div>
           <div class="col-xs-9">
-            <h1 class="title">Name of the Business</h1>
-              <h2>Business Category</h2>
-              <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-              <p class="description"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. </p>
-              <p>Phone Number</p>
-              <p>Address</p>
+            <!-- filler information to be replaced by variables from the database -->
+            <h1 class="title"><%= business.name %></h1>
+              <h2><%= business.category %></h2>
+              <div class="card-rating">
+              <%= render 'stars', business: business %>
+                <p><%= business.ratings %></p>
+                <p id='card-rating-number'></p>
+              </div>
+              <p class="description"><%= truncate(business.reviews.first.content, length: 70) %></p>
+              <div class="contact">
+                <p><%= business.phone %> • <%= business.shortaddress.chomp(", Montréal") %></p>
+              </div>
           </div>
         </div>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
-      
     </div>
   </div>
-  
-</div>
-
-</body>
