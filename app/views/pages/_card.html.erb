@@ -14,19 +14,15 @@
   <div class="card-image">
   </div>
   <div class="card-content">
-    <h1>St. Viateur Bagels</h1>
+    <h1><%= business.name %></h1>
     <div class="card-rating">
-      <i class="fas fa-star"></i>
-      <i class="fas fa-star"></i>
-      <i class="fas fa-star"></i>
-      <i class="fas fa-star"></i>
-      <i class="fas fa-star-half"></i>
-      <p>4,5</p>
-      <p id='card-rating-number'>(210)</p>
+    <%= render 'stars', business: business %>
+      <p><%= business.ratings %></p>
+      <p id='card-rating-number'></p>
     </div>
-    <p>1234 St-Laurent • (514) 876-8765</p>
+    <p><%= business.phone %> • <%= business.shortaddress.chomp(", Montréal") %></p>
     <p id="card-description">
-      Best bagels in Montreal it’s really amazing and I love it and it’s good...
+      <%= truncate(business.reviews.first.content, length: 70) %>
     </p>
     <div class="card-action">
       <a href="" class="btn primary-button">ADD</a>
