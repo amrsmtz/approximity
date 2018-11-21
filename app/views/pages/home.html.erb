@@ -1,5 +1,5 @@
 <!-- Banner -->
-<%= render 'banner' %>
+<%= render 'components/banner' %>
 
 <!-- Search -->
 <div class="wrapper">
@@ -13,7 +13,7 @@
     <% end %>
     <div class="search-business-cards">
       <% @businesses.each do |b|  %>
-      <%= render 'card', business: b %>
+      <%= render 'components/card', business: b %>
       <% end %>
     </div>
   </div>
@@ -32,7 +32,7 @@
         placeholder: "End location"
       %>
     <% end %>
-    <%= render 'card-list' %>
+    <%= render 'components/card-list' %>
     <a href="" class="btn button-call-to-action center-block" style="margin-top: 30px; width: 130px">
       GO TO MAP
     </a>

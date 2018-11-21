@@ -1,0 +1,8 @@
+var businessesHTML = "";
+
+<% @businesses.each do |business|%>
+businessesHTML= businessesHTML + "<%= j(render 'components/card', business: business) %>"
+<% end %>
+
+var businessCards = document.getElementById('card')
+businessCards.innerHTML = businessesHTML
