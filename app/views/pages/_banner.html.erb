@@ -1,7 +1,10 @@
-<div class="banner">
+<div class="landing-banner">
   <div class="banner-search">
     <h1>Approximity</h1>
-    <h2>SHOP LOCAL AT SMALL BUSINESSES IN YOUR NEIGHBORHOOD</h2>
+    <div class="element-inline">
+      <span>SHOP LOCAL:</span>
+      <div class="typedjs"><span id="typedjs"></span></div>
+    </div>
     <%= form_tag root_path, method: :get do %>
       <%= text_field_tag :query,
         params[:query],
