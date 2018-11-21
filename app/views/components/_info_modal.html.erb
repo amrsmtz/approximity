@@ -7,6 +7,7 @@
         <div class="modal-header">
           <%= render "components/modal_map" %>
         </div>
+        <div class="modal-info">
         <div class="row">
           <div class="col-xs-3">
             <div class="tiny_card">
@@ -16,10 +17,10 @@
           </div>
           <div class="col-xs-9">
             <!-- filler information to be replaced by variables from the database -->
-            <h1 class="title"><%= business.name %></h1>
+              <h1 class="title"><%= business.name %></h1>
               <h2><%= business.category %></h2>
               <div class="card-rating">
-              <%= render 'stars', business: business %>
+              <%= render 'components/stars', business: business %>
                 <p><%= business.ratings %></p>
                 <p id='card-rating-number'></p>
               </div>
@@ -27,9 +28,11 @@
               <div class="contact">
                 <p><%= business.phone %> • <%= business.shortaddress.chomp(", Montréal") %></p>
               </div>
+
+            </div>
           </div>
+          <button type="button" class="btn btn-default modal-button" data-dismiss="modal">Close</button>
         </div>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
