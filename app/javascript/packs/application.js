@@ -7,7 +7,9 @@ var options = {
   loop: true
 }
 
-var typed = "Look for: " + new Typed("#typedjs", options);
+if (document.getElementById('typedjs')) {
+  var typed = "Look for: " + new Typed("#typedjs", options);
+}
 
 const map_button = document.querySelector("#map-button");
 
@@ -25,3 +27,10 @@ if (map_button) {
   })
 }
 
+if (document.getElementById('map')) {
+  mapboxgl.accessToken = process.env.MAPBOX_API_KEY;
+  var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v9'
+  });
+}
