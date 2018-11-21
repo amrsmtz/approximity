@@ -3,19 +3,19 @@
 
 <!-- Search -->
 <div class="wrapper">
-  <div class="search-business">
-    <%= form_tag root_path, method: :get do %>
+  <div class="search-business" id="homesearch">
+    <%= form_tag root_path, method: :get, remote: true do %>
       <%= text_field_tag :query,
         params[:query],
         class: "form-control",
         placeholder: "Find a business to add to the journey"
       %>
     <% end %>
-    <div class="search-business-cards">
-      <% @businesses.each do |b|  %>
-      <%= render 'components/card', business: b %>
-      <% end %>
-    </div>
+      <div class="search-business-cards" id="business-cards">
+        <% @businesses.each do |b|  %>
+        <%= render 'components/card', business: b %>
+        <% end %>
+      </div>
   </div>
   <div class="list-business">
     <%= form_tag root_path, method: :get do %>
@@ -33,8 +33,6 @@
       %>
     <% end %>
     <%= render 'components/card-list' %>
-    <a href="" class="btn button-call-to-action center-block" style="margin-top: 30px; width: 130px">
-      GO TO MAP
-    </a>
+    <%= link_to "GO TO MAP", map_path, class: "btn button-call-to-action center-block", style: "margin-top: 30px; width: 130px" %>
   </div>
 </div>
