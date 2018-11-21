@@ -11,7 +11,7 @@
           <div class="col-xs-3">
             <div class="tiny_card">
               <div class="image"><img src="https://picsum.photos/200"></div>
-              <%= render "components/hours_table" %>
+              <%= render "components/hours_table", {business: business} %>
             </div>
           </div>
           <div class="col-xs-9">
@@ -23,7 +23,7 @@
                 <p><%= business.ratings %></p>
                 <p id='card-rating-number'></p>
               </div>
-              <p class="description"><%= truncate(business.reviews.first.content, length: 70) %></p>
+              <p class="description"><%= business.reviews.first.content%></p>
               <div class="contact">
                 <p><%= business.phone %> • <%= business.shortaddress.chomp(", Montréal") %></p>
               </div>
