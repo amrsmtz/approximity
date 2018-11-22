@@ -7,7 +7,10 @@
         <div class="modal-header">
           <%= render "components/modal_map" %>
         </div>
-        <div class="modal-info">
+        <div class="modal-body-content">
+          <div class="modal-status">
+          <%= render 'components/status' %>
+          </div>
         <div class="row">
           <div class="col-xs-3">
             <div class="tiny_card">
@@ -17,7 +20,6 @@
           </div>
           <div class="col-xs-9">
             <div class="modal-business-info">
-              <%= render 'components/status' %>
               <h1 class="modal-title"><%= business.name %></h1>
               <h2 class="modal-category"><%= business.category %></h2>
               <div class="card-rating">
@@ -26,7 +28,8 @@
                 <p id='card-rating-number'></p>
               </div>
               <p class="description"><%= business.reviews.first.content%></p>
-                <p class= "contact"><i class="fas fa-phone"></i><%= business.phone %> • <i class="fas fa-address-card"></i><%= business.shortaddress.chomp(", Montréal") %></p>
+              <br>
+              <p class= "contact"><i class="fas fa-phone"></i><%= business.phone %> • <i class="fas fa-address-card"></i><%= business.shortaddress.chomp(", Montréal") %></p>
               </div>
             </div>
           </div>

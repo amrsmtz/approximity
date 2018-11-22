@@ -1,3 +1,13 @@
+.modal-body-content {
+  position: relative;
+}
+
+.modal-status {
+  position: absolute;
+  top: 50px;
+  right:100px;
+}
+
 .modal-business-info {
   padding: 50px;
   h1.modal-title {
@@ -11,13 +21,15 @@
     font-family: Montserrat;
     font-size: 32px;
   }
-  p {
+  p.description {
     font-family: Open Sans;
     font-size: 16px;
     text-align: justify;
   }
   p.contact {
     padding-right: 15px;
+    font-size: 16px;
+    text-align: justify;
     i {
       padding-right: 10px;
     }
