@@ -9,14 +9,19 @@
 </style>
 
 <!-- HTML -->
-<div class="card-list" id="card-list">
+<div class="card-list" id="card-list-<%= business.id %>">
   <div class="card-list-image">
   </div>
   <div class="card-list-content">
     <div class="card-list-content-inline">
       <h1><%= business.name %></h1>
-      <a href="">
-        <i class="fas fa-times"></i>
+       <div id="delete-business">
+          <%= simple_form_for(business, url: journey_path, method: :delete, remote: true) do |f| %>
+          <%= f.hidden_field :id %>
+          <%= f.submit "delete", class: "btn primary-button" %>
+            <i class="fas fa-times"></i>
+          <% end %>
+        </div>
       </a>
     </div>
     <div class="card-list-rating">

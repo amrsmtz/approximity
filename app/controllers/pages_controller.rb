@@ -20,4 +20,14 @@ class PagesController < ApplicationController
       format.js # <-- will render `app/views/pages/create_journey.js.erb`
     end
   end
+
+  def delete_from_journey
+    @business_id = params[:business][:id].to_i
+    index_to_destroy = session[:journey].find_index { |business| business['id'] == @business_id }
+    session[:journey].delete_at(index_to_destroy)
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js # <-- will render `app/views/pages/delete_from_journey.js.erb`
+    end
+  end
 end
