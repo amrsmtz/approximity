@@ -3,16 +3,19 @@
     <%= text_field_tag :query,
       params[:query],
       class: "form-control",
+      id: "flat_address_start",
       placeholder: "Start location"
     %>
   <% end %>
+  <div class="list-business-spacer"></div>
   <%= form_tag root_path, method: :get do %>
     <%= text_field_tag :query,
       params[:query],
       class: "form-control",
+      id: "flat_address_end",
       placeholder: "End location"
     %>
   <% end %>
-  <%= render 'components/card-list' %>
+  <%#= render 'components/card-list' %>
 </div>
 <%= render "components/fullpage_map" %>
