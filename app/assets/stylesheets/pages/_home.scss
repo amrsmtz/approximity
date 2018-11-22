@@ -17,9 +17,7 @@
   width: 30%;
   background: white;
   box-shadow: -4px 0px 4px rgba(0, 0, 0, 0.25);
-  input {
-    margin-bottom: 10px;
-  }
+
 }
 .list-business-content {
   position: sticky;
@@ -30,4 +28,7 @@
   background-color: #E1E1E1;
   border: none;
   box-shadow: none;
+}
+.list-business-spacer {
+  height: 10px;
 }
