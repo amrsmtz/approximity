@@ -1,19 +1,31 @@
 .modal-body-content {
   position: relative;
+  padding: 70px;
 }
 
 .modal-status {
   position: absolute;
   top: 50px;
-  right:100px;
+  right:50px;
 }
 
-.modal-image {
+.tiny-card {
+  td {
+    padding-top: 4px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    font-size: 12px;
+    text-align: justify;
+  }
+}
+
+.modal-image imag {
   border-radius: 2px;
 }
 
 .modal-business-info {
-  padding: 50px;
   h1.modal-title {
     font-family: Montserrat;
     font-weight: normal;
