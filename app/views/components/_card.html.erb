@@ -12,16 +12,22 @@
 <!-- HTML -->
 <div class="card">
   <div class="card-image">
+    <div class="card-status">
+      <%= render 'components/status' %>
+    </div>
   </div>
   <div class="card-content">
     <h1><%= business.name %></h1>
     <div class="card-rating">
-    <%= render 'components/stars', business: business %>
+      <%= render 'components/stars', business: business %>
       <p><%= business.ratings %></p>
-      <p id='card-rating-number'></p>
     </div>
-    <p><%= business.phone %> • <%= business.shortaddress.chomp(", Montréal") %></p>
-    <p id="card-description">
+    <div>
+      <p>
+        <%= business.phone %> • <%= business.shortaddress.chomp(", Montréal") %>
+      </p>
+    </div>
+    <p class="card-description">
       <%= truncate(business.reviews.first.content, length: 70) %>
     </p>
     <div class="card-action">

@@ -1,1 +1,18 @@
+<div class="map-content" style="z-index: 1;">
+  <%= form_tag root_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Start location"
+    %>
+  <% end %>
+  <%= form_tag root_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "End location"
+    %>
+  <% end %>
+  <%= render 'components/card-list' %>
+</div>
 <%= render "components/fullpage_map" %>

@@ -17,13 +17,18 @@
   width: 30%;
   background: white;
   box-shadow: -4px 0px 4px rgba(0, 0, 0, 0.25);
+
+}
+.list-business-content {
+  position: sticky;
+  top: 0;
   padding: 30px;
-  input {
-    margin-bottom: 10px;
-  }
 }
 .form-control {
   background-color: #E1E1E1;
   border: none;
   box-shadow: none;
+}
+.list-business-spacer {
+  height: 10px;
 }
