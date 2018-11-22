@@ -13,20 +13,6 @@ if (document.getElementById('typedjs')) {
 
 const map_button = document.querySelector("#map-button");
 
-if (map_button) {
-  map_button.addEventListener("click", (event) => {
-    if (document.querySelector(".mapboxgl-canary") === null) {
-      setTimeout(() => {
-        mapboxgl.accessToken = process.env.publickey;
-        var map = new mapboxgl.Map({
-          container: 'map',
-          style: 'mapbox://styles/mapbox/streets-v9'
-        });
-      }, 1000);
-    }
-  })
-}
-
 if (document.getElementById('map')) {
   mapboxgl.accessToken = process.env.MAPBOX_API_KEY;
   var map = new mapboxgl.Map({

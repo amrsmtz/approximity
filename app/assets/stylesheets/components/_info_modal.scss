@@ -1,10 +1,41 @@
-.info-modal {
-  position: relative;
+.modal-business-info {
+  padding: 50px;
+  h1.modal-title {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    text-decoration: none;
+    font-size: 40px; 
+  }
+  h2.modal-category {
+    margin: 0px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    font-size: 32px;
+  }
+  p.description {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    font-size: 16px;
+    text-align: justify;
+  }
+  p.contact {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    font-size: 16px;
+    text-align: justify;
+  }
 }
 
-.tiny_card {
-  position: relative;
-  margin: 5px;
+.card:hover h1.modal-title {
+  text-decoration: none;
 }
 
 .contact {
@@ -21,3 +52,4 @@
   bottom: 5px;
   right: 10px;
 }
+

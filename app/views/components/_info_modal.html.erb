@@ -16,19 +16,17 @@
             </div>
           </div>
           <div class="col-xs-9">
-            <!-- filler information to be replaced by variables from the database -->
-              <h1 class="title"><%= business.name %></h1>
-              <h2><%= business.category %></h2>
+            <div class="modal-business-info">
+              <h1 class="modal-title"><%= business.name %></h1>
+              <h2 class="modal-category"><%= business.category %></h2>
               <div class="card-rating">
               <%= render 'components/stars', business: business %>
                 <p><%= business.ratings %></p>
                 <p id='card-rating-number'></p>
               </div>
               <p class="description"><%= business.reviews.first.content%></p>
-              <div class="contact">
-                <p><%= business.phone %> • <%= business.shortaddress.chomp(", Montréal") %></p>
+                <p class= "contact"><i class="fas fa-phone"></i><%= business.phone %> • <i class="fas fa-address-card"></i><%= business.shortaddress.chomp(", Montréal") %></p>
               </div>
-
             </div>
           </div>
           <button type="button" class="btn btn-default modal-button" data-dismiss="modal">Close</button>
