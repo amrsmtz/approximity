@@ -1,16 +1,21 @@
 .card {
   width: 260px;
   margin-bottom: 30px;
+  position: relative;
   p {
     font-size: 13px;
     margin: 5px 0 0 0;
   }
 }
+.card-status {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
 .card:hover h1 {
   text-decoration: underline;
 }
 .card-content {
-  padding: 0 10px 0 10px;
   h1 {
     font-weight: bold;
     font-size: 16px;
@@ -23,14 +28,11 @@
   display: flex;
   align-items: center;
   margin-bottom: 10px;
-  font-size: 14px;
+  font-size: 12px;
   p {
     margin: 0;
     font-weight: bold;
   }
-}
-.card-info {
-
 }
 .card-description {
   color: #838383;

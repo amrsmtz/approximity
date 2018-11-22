@@ -12,6 +12,9 @@
 <!-- HTML -->
 <div class="card">
   <div class="card-image">
+    <div class="card-status">
+      <%= render 'components/status' %>
+    </div>
   </div>
   <div class="card-content">
     <h1><%= business.name %></h1>
@@ -19,7 +22,7 @@
       <%= render 'components/stars', business: business %>
       <p><%= business.ratings %></p>
     </div>
-    <div class="card-info">
+    <div>
       <p>
         <%= business.phone %> • <%= business.shortaddress.chomp(", Montréal") %>
       </p>
