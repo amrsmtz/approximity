@@ -1,19 +1,25 @@
 .card {
   width: 260px;
   margin-bottom: 30px;
+  position: relative;
   p {
-    margin: 10px 0 10px 0;
+    font-size: 13px;
+    margin: 5px 0 0 0;
   }
+}
+.card-status {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 .card:hover h1 {
   text-decoration: underline;
 }
 .card-content {
-  padding: 0 10px 0 10px;
   h1 {
     font-weight: bold;
     font-size: 16px;
-    margin-top: 15px;
+    margin-top: 17px;
     margin-bottom: 5px;
   }
 }
@@ -21,16 +27,14 @@
   color: $yellow;
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
+  font-size: 12px;
   p {
     margin: 0;
     font-weight: bold;
   }
-  #card-rating-number {
-    color: #838383;
-    padding-left: 10px;
-  }
 }
-#card-description {
+.card-description {
   color: #838383;
 }
 .card-action {

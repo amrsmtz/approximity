@@ -1,4 +1,5 @@
 .card-list {
+  background-color: white;
   width: 100%;
   margin-top: 20px;
   display: flex;
@@ -35,6 +36,8 @@
   p {
     color: $yellow;
     margin: 0;
+    font-weight: bold;
+    padding-bottom: 1px;
   }
   #card-list-rating-number {
     color: #838383;
