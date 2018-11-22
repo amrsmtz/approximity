@@ -1,19 +1,59 @@
-.info-modal {
+.modal-body-content {
   position: relative;
+  padding: 70px;
 }
 
-.tiny_card {
-  position: relative;
-  margin: 5px;
+.modal-status {
+  position: absolute;
+  top: 50px;
+  right:50px;
 }
 
-.contact {
-  font-family: Open Sans;
-  font-style: Regular;
-  font-size: 16px;
-  line-height: 22px;
-  align-items: center;
-  color: #4A4A4A;
+.tiny-card {
+  td {
+    padding-top: 4px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    font-size: 12px;
+    text-align: justify;
+  }
+}
+
+.modal-image imag {
+  border-radius: 2px;
+}
+
+.modal-business-info {
+  h1.modal-title {
+    font-family: Montserrat;
+    font-weight: normal;
+    text-decoration: none;
+    font-size: 40px; 
+  }
+  h2.modal-category {
+    margin: 0px;
+    font-family: Montserrat;
+    font-size: 32px;
+  }
+  p.description {
+    font-family: Open Sans;
+    font-size: 16px;
+    text-align: justify;
+  }
+  p.contact {
+    padding-right: 15px;
+    font-size: 16px;
+    text-align: justify;
+    i {
+      padding-right: 10px;
+    }
+  }
+}
+
+.card:hover h1.modal-title {
+  text-decoration: none;
 }
 
 .modal-button {
@@ -21,3 +61,4 @@
   bottom: 5px;
   right: 10px;
 }
+

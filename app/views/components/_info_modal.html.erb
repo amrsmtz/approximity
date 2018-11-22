@@ -1,34 +1,36 @@
   <!-- Modal -->
   <div class="modal fade" id="<%=business.id %>" role="dialog">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-lg" style="width:1000px;">
 
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <%= render "components/modal_map" %>
+          <%= render "components/modal_map", business: business %>
         </div>
-        <div class="modal-info">
+        <div class="modal-body-content">
+          <div class="modal-status">
+          <%= render 'components/status' %>
+          </div>
         <div class="row">
           <div class="col-xs-3">
-            <div class="tiny_card">
-              <div class="image"><img src="https://picsum.photos/200"></div>
+            <div class="tiny-card">
+              <img class= "modal-image" src="https://picsum.photos/200">
               <%= render "components/hours_table", {business: business} %>
             </div>
           </div>
           <div class="col-xs-9">
-            <!-- filler information to be replaced by variables from the database -->
-              <h1 class="title"><%= business.name %></h1>
-              <h2><%= business.category %></h2>
+            <div class="modal-business-info">
+              <h1 class="modal-title"><%= business.name %></h1>
+              <h2 class="modal-category"><%= business.category %></h2>
               <div class="card-rating">
               <%= render 'components/stars', business: business %>
                 <p><%= business.ratings %></p>
                 <p id='card-rating-number'></p>
               </div>
               <p class="description"><%= business.reviews.first.content%></p>
-              <div class="contact">
-                <p><%= business.phone %> • <%= business.shortaddress.chomp(", Montréal") %></p>
+              <br>
+              <p class= "contact"><i class="fas fa-phone"></i><%= business.phone %> • <i class="fas fa-address-card"></i><%= business.shortaddress.chomp(", Montréal") %></p>
               </div>
-
             </div>
           </div>
           <button type="button" class="btn btn-default modal-button" data-dismiss="modal">Close</button>
