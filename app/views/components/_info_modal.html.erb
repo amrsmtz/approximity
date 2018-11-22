@@ -1,7 +1,7 @@
   <!-- Modal -->
   <div class="modal fade" id="<%=business.id %>" role="dialog">
     <div class="modal-dialog modal-lg">
-    
+
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
@@ -19,7 +19,7 @@
             <h1 class="title"><%= business.name %></h1>
               <h2><%= business.category %></h2>
               <div class="card-rating">
-              <%= render 'stars', business: business %>
+              <%= render 'components/stars', business: business %>
                 <p><%= business.ratings %></p>
                 <p id='card-rating-number'></p>
               </div>
