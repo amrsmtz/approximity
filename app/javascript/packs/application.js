@@ -11,12 +11,23 @@ if (document.getElementById('typedjs')) {
   var typed = "Look for: " + new Typed("#typedjs", options);
 }
 
-// const map_button = document.querySelector("#map-button");
+// Autocomplete on the start location and end location
 
-// document.querySelectorAll('.map').forEach((mapElement) =>  {
-//   mapboxgl.accessToken = process.env.MAPBOX_API_KEY;
-//   var map = new mapboxgl.Map({
-//       container: mapElement,
-//       style: 'mapbox://styles/mapbox/streets-v9'
-//   });
-// })
+const addressInputStart = document.getElementById('flat_address_start');
+
+if (addressInputStart) {
+  const places = require('places.js');
+  const placesAutocomplete = places({
+    container: addressInputStart
+  });
+}
+
+const addressInputEnd = document.getElementById('flat_address_end');
+
+if (addressInputEnd) {
+  const places = require('places.js');
+  const placesAutocomplete = places({
+    container: addressInputEnd
+  });
+}
+
