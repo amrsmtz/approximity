@@ -16,10 +16,14 @@
     <div class="card-list-content-inline">
       <h1><%= business.name %></h1>
        <div id="delete-business">
+
+
           <%= simple_form_for(business, url: journey_path, method: :delete, remote: true) do |f| %>
           <%= f.hidden_field :id %>
-          <%= f.submit "delete", class: "btn primary-button" %>
-            <i class="fas fa-times"></i>
+          <%#= f.submit "delete", class: "btn primary-button" %>
+         <%= button_tag type: 'submit', class: 'font-awesome-button' do %>
+          <i class="fas fa-times"></i>
+          <% end %>
           <% end %>
         </div>
       </a>
