@@ -34,3 +34,23 @@ if (document.getElementById('map')) {
       style: 'mapbox://styles/mapbox/streets-v9'
   });
 }
+
+// Autocomplete on the start location and end location
+
+const addressInputStart = document.getElementById('flat_address_start');
+
+if (addressInputStart) {
+  const places = require('places.js');
+  const placesAutocomplete = places({
+    container: addressInputStart
+  });
+}
+
+const addressInputEnd = document.getElementById('flat_address_end');
+
+if (addressInputEnd) {
+  const places = require('places.js');
+  const placesAutocomplete = places({
+    container: addressInputEnd
+  });
+}
