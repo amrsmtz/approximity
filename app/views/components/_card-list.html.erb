@@ -9,27 +9,22 @@
 </style>
 
 <!-- HTML -->
-<div class="card-list">
+<div class="card-list" id="card-list">
   <div class="card-list-image">
   </div>
   <div class="card-list-content">
     <div class="card-list-content-inline">
-      <h1>St. Viateur Bagels</h1>
+      <h1><%= business.name %></h1>
       <a href="">
         <i class="fas fa-times"></i>
       </a>
     </div>
     <div class="card-list-rating">
-      <i class="fas fa-star"></i>
-      <i class="fas fa-star"></i>
-      <i class="fas fa-star"></i>
-      <i class="fas fa-star-half"></i>
-      <p>3,5</p>
-      <p id='card-list-rating-number'>(210)</p>
+      <%= render 'components/stars', business: business %>
+      <p><%= business.ratings %></p>
     </div>
     <div class="card-list-content-inline">
-      <p>(514) 876-8765</p>
-      <p>1.2 km</p>
+      <p><%= business.phone %></p>
     </div>
   </div>
 </div>

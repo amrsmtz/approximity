@@ -36,7 +36,9 @@
           placeholder: "End location"
         %>
       <% end %>
-      <%= render 'components/card-list' %>
+      <div id="journey-cart">
+        <%#= render 'components/card-list' %>
+      </div>
       <%= link_to "GO TO MAP", map_path, class: "btn button-call-to-action center-block", style: "margin-top: 30px; width: 130px" %>
     </div>
   </div>
