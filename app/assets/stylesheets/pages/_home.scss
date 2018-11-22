@@ -17,10 +17,14 @@
   width: 30%;
   background: white;
   box-shadow: -4px 0px 4px rgba(0, 0, 0, 0.25);
-  padding: 30px;
   input {
     margin-bottom: 10px;
   }
+}
+.list-business-content {
+  position: sticky;
+  top: 0;
+  padding: 30px;
 }
 .form-control {
   background-color: #E1E1E1;

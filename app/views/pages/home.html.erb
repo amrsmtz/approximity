@@ -18,21 +18,23 @@
       </div>
   </div>
   <div class="list-business">
-    <%= form_tag root_path, method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Start location"
-      %>
-    <% end %>
-    <%= form_tag root_path, method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "End location"
-      %>
-    <% end %>
-    <%= render 'components/card-list' %>
-    <%= link_to "GO TO MAP", map_path, class: "btn button-call-to-action center-block", style: "margin-top: 30px; width: 130px" %>
+    <div class="list-business-content">
+      <%= form_tag root_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Start location"
+        %>
+      <% end %>
+      <%= form_tag root_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "End location"
+        %>
+      <% end %>
+      <%= render 'components/card-list' %>
+      <%= link_to "GO TO MAP", map_path, class: "btn button-call-to-action center-block", style: "margin-top: 30px; width: 130px" %>
+    </div>
   </div>
 </div>
