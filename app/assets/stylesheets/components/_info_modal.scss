@@ -2,49 +2,27 @@
   padding: 50px;
   h1.modal-title {
     font-family: Montserrat;
-    font-style: normal;
     font-weight: normal;
-    line-height: normal;
     text-decoration: none;
     font-size: 40px; 
   }
   h2.modal-category {
     margin: 0px;
     font-family: Montserrat;
-    font-style: normal;
-    font-weight: normal;
-    line-height: normal;
     font-size: 32px;
   }
-  p.description {
+  p {
     font-family: Open Sans;
-    font-style: normal;
-    font-weight: normal;
-    line-height: normal;
     font-size: 16px;
     text-align: justify;
   }
   p.contact {
-    font-family: Open Sans;
-    font-style: normal;
-    font-weight: normal;
-    line-height: normal;
-    font-size: 16px;
-    text-align: justify;
+    padding-right: 15px;
   }
 }
 
 .card:hover h1.modal-title {
   text-decoration: none;
-}
-
-.contact {
-  font-family: Open Sans;
-  font-style: Regular;
-  font-size: 16px;
-  line-height: 22px;
-  align-items: center;
-  color: #4A4A4A;
 }
 
 .modal-button {
