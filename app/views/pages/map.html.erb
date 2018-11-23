@@ -16,6 +16,11 @@
       placeholder: "End location"
     %>
   <% end %>
-  <%#= render 'components/card-list' %>
+  <div id="journey-cart">
+    <% @businesses.each do |business| %>
+      <%= render 'components/card-list', business: business %>
+    <% end %>
+  </div>
+  <%= link_to "BACK", root_path, class: "btn button-call-to-action center-block", style: "margin-top: 30px; width: 130px" %>
 </div>
-<%= render "components/fullpage_map" %>
+<%= render "components/fullpage_map", markers: @markers %>
