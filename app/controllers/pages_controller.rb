@@ -31,7 +31,7 @@ class PagesController < ApplicationController
 
   def map
     @business_ids = session[:journey]
-    @businesses = @business_ids.map { |id| Business.find(id) }
+    @businesses = @business_ids.map { |id| Busxiness.find(id) }
     @markers = @businesses.map do |business|
       { lat: business.latitude, lng: business.longitude }
     end
