@@ -11,11 +11,11 @@
         placeholder: "Find a business to add to the journey"
       %>
     <% end %>
-      <div class="search-business-cards" id="business-cards">
-        <% @businesses.each do |b|  %>
+    <div class="search-business-cards" id="business-cards">
+      <% @businesses.each do |b|  %>
         <%= render 'components/card', business: b %>
-        <% end %>
-      </div>
+      <% end %>
+    </div>
   </div>
 
   <div class="list-business" id="test">
