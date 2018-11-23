@@ -21,19 +21,21 @@
           <div class="col-xs-9">
             <div class="modal-business-info">
               <h1 class="modal-title"><%= business.name %></h1>
-              <h2 class="modal-category"><%= business.category %></h2>
               <div class="card-rating">
               <%= render 'components/stars', business: business %>
                 <p><%= business.ratings %></p>
                 <p id='card-rating-number'></p>
               </div>
-              <p class="description"><%= business.reviews.first.content%></p>
-              <br>
-              <p class= "contact"><i class="fas fa-phone"></i><%= business.phone %> • <i class="fas fa-address-card"></i><%= business.shortaddress.chomp(", Montréal") %></p>
+              <p class= "contact">
+                <i class="fas fa-phone"></i><%= business.phone %>
+                <br>
+                <i class="fas fa-address-card"></i><%= business.shortaddress.chomp(", Montréal") %></p>
               </div>
+              <br>
+              <p class="description"><%= business.reviews.first.content%></p>
             </div>
           </div>
-          <button type="button" class="btn btn-default modal-button" data-dismiss="modal">Close</button>
+          <button type="button" class="btn font-awesome-button modal-button" data-dismiss="modal"><i class="fas fa-times"></i></button>
         </div>
       </div>
     </div>

@@ -1,14 +1,25 @@
 .modal-body-content {
   position: relative;
   padding: 70px;
-}
 
+  p.description {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    font-size: 16px;
+    text-align: justify;
+  }
+}
 .modal-status {
   position: absolute;
   top: 50px;
-  right:50px;
+  right:70px;
 }
-
+.hours {
+  margin-top: 10px;
+  margin-left: 5px;
+}
 .tiny-card {
   td {
     padding-top: 4px;
@@ -20,31 +31,20 @@
     text-align: justify;
   }
 }
-
-.modal-image imag {
+.modal-image img {
   border-radius: 2px;
 }
-
 .modal-business-info {
   h1.modal-title {
     font-family: Montserrat;
     font-weight: normal;
     text-decoration: none;
-    font-size: 40px; 
-  }
-  h2.modal-category {
-    margin: 0px;
-    font-family: Montserrat;
     font-size: 32px;
-  }
-  p.description {
-    font-family: Open Sans;
-    font-size: 16px;
-    text-align: justify;
+    margin-bottom: 0px;
   }
   p.contact {
     padding-right: 15px;
-    font-size: 16px;
+    font-size: 14px;
     text-align: justify;
     i {
       padding-right: 10px;
@@ -55,10 +55,9 @@
 .card:hover h1.modal-title {
   text-decoration: none;
 }
-
 .modal-button {
   position: absolute;
-  bottom: 5px;
+  top: 10px;
   right: 10px;
 }
 
