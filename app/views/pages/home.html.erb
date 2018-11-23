@@ -7,7 +7,7 @@
     <%= form_tag root_path, method: :get, remote: true do %>
       <%= text_field_tag :query,
         params[:query],
-        class: "form-control",
+        class: "form-control form-grey",
         placeholder: "Find a business to add to the journey"
       %>
     <% end %>
@@ -22,7 +22,7 @@
       <%= form_tag root_path, method: :get do %>
         <%= text_field_tag :query,
           params[:query],
-          class: "form-control",
+          class: "form-control form-grey",
           id: "flat_address_start",
           placeholder: "Start location"
         %>
@@ -31,7 +31,7 @@
       <%= form_tag root_path, method: :get do %>
         <%= text_field_tag :query,
           params[:query],
-          class: "form-control",
+          class: "form-control form-grey",
           id: "flat_address_end",
           placeholder: "End location"
         %>
