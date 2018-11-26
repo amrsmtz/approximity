@@ -1,21 +1,20 @@
 <div class="map-content" style="z-index: 1;">
-  <%= form_tag root_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
+  <%= form_tag map_path, method: :get do %>
+    <%= text_field_tag 'origin',
+      @origin,
+      placeholder: "Set origin",
       class: "form-control",
-      id: "flat_address_start",
-      placeholder: "Start location"
+      id: "flat_address_start"
     %>
   <% end %>
-  <div class="list-business-spacer"></div>
-  <%= form_tag root_path, method: :get do %>
-    <%= text_field_tag :query,
+  <%#= form_tag root_path, method: :get do %>
+    <%#= text_field_tag :query,
       params[:query],
       class: "form-control",
       id: "flat_address_end",
-      placeholder: "End location"
+      placeholder: "Set destination"
     %>
-  <% end %>
+  <%# end %>
   <div id="journey-cart">
     <% @businesses.each do |business| %>
       <%= render 'components/card-list', business: business %>

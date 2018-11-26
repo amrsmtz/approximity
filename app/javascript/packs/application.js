@@ -44,35 +44,12 @@ const mapElement = document.getElementById('map');
 if (mapElement) { // only build a map if there's a div#map to inject into
   mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
 
+  // Initialize the map
+
   const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v10'
   });
-
-  // Add the markers to the map
-
-  const markers = JSON.parse(mapElement.dataset.markers);
-
-  markers.forEach((marker) => {
-    new mapboxgl.Marker()
-      .setLngLat([marker.lng, marker.lat])
-      .addTo(map);
-  })
-
-  // Recenter map accordng to markers
-
-  if (markers.length === 0) {
-    map.setZoom(1);
-  } else if (markers.length === 1) {
-    map.setZoom(14);
-    map.setCenter([markers[0].lng, markers[0].lat]);
-  } else {
-    const bounds = new mapboxgl.LngLatBounds();
-    markers.forEach((marker) => {
-      bounds.extend([marker.lng, marker.lat]);
-    });
-    map.fitBounds(bounds, { duration: 0, padding: 75 })
-  }
 
   // Add directions
 
@@ -85,14 +62,20 @@ if (mapElement) { // only build a map if there's a div#map to inject into
     }
   });
 
-  // Set origin
-  directions.setOrigin([-73.567256, 45.5016889]);
+  const markers = JSON.parse(mapElement.dataset.markers);
+  const originValue = document.getElementById('flat_address_start').value
 
-  // Set waypoints
-
-
-  // Set destination
-  directions.setDestination([-73.6, 45.5016889]);
+  map.on('load', function() {
+    directions.setOrigin(originValue);
+    let i = 0;
+    markers.forEach((marker) => {
+      directions.addWaypoint(i, [marker.lng, marker.lat]);
+      if (i === markers.length - 1) {
+        directions.setDestination([marker.lng, marker.lat]);
+      }
+      i += 1;
+    });
+  });
 
   map.addControl(directions, 'top-left');
 }
