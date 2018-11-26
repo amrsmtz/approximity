@@ -70,9 +70,11 @@ ids.each do |id|
     three_reviews.first(5).each do |review|
       rating = review["rating"]
       text = review["text"]
+      name = review["author_name"]
       Review.create!(rating: rating,
                      business: business,
                      content: text,
+                     author_name: name,
                      )
     end
   rescue NoMethodError
