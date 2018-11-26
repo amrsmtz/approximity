@@ -3,7 +3,6 @@
   .card-image {
     width: 100%;
     height: 175px;
-    background-image: url(<%= image_path('business.jpg') %>);
     background-size: cover;
     position: relative;
   }
@@ -11,7 +10,7 @@
 
 <!-- HTML -->
 <div class="card">
-  <div class="card-image">
+  <div class="card-image" style="background-image: url('<%= business.photo.html_safe %>');">
     <div class="card-status">
       <% if business.hours[Date.today.wday-1].include? "Closed" %>
         <% is_open = false %>
@@ -46,3 +45,5 @@
     </div>
   </div>
 </div>
+
+
