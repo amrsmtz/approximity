@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-puts "destroying Db"
+puts "destroying previous db..."
 Business.destroy_all
 
 
@@ -31,7 +31,7 @@ drycleanerid = JSON.parse(drycleaner_serialized)
 
 
 (bakeryid["results"] + shoemakerid["results"] + butcherid["results"] + drycleanerid["results"]).each do |result|
- ids << result["place_id"]
+  ids << result["place_id"]
 end
 
 ids.each do |id|
@@ -39,7 +39,8 @@ ids.each do |id|
   details_serialized = open(details_url).read
   details = JSON.parse(details_serialized)["result"]
 
-    begin
+  begin
+    # Taking info from Google Places
     name = details["name"]
     shortaddress = details["vicinity"]
     longaddress = details["formatted_address"]
@@ -51,7 +52,7 @@ ids.each do |id|
     price_level = details["price_level"]
     latitude = details["geometry"]["location"]["lat"]
     longitude = details["geometry"]["location"]["lng"]
-
+    # Creating the business in the db
     business = Business.create!(
       name: name,
       shortaddress: shortaddress,
@@ -65,7 +66,7 @@ ids.each do |id|
       latitude: latitude,
       longitude: longitude,
       )
-
+    # Implementing the reviews
     three_reviews = details["reviews"]
     three_reviews.first(5).each do |review|
       rating = review["rating"]
@@ -82,7 +83,7 @@ ids.each do |id|
   end
 end
 
-
+puts 'seeding finished!'
 
 # storedb = []
 
