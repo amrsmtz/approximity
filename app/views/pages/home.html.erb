@@ -20,27 +20,27 @@
 
   <div class="list-business" id="test">
     <div class="list-business-content">
-      <%= form_tag root_path, method: :get do %>
-        <%= text_field_tag :query,
-          params[:query],
+      <%= form_tag map_path, method: :get do %>
+        <%= text_field_tag 'origin',
+          nil,
           class: "form-control form-grey",
-          id: "flat_address_start",
-          placeholder: "Start location"
+          id: 'flat_address_start',
+          placeholder: "Set origin"
         %>
+        <div class="list-business-spacer"></div>
+        <%#= form_tag root_path, method: :get do %>
+          <%#= text_field_tag :query,
+            params[:query],
+            class: "form-control form-grey",
+            id: "flat_address_end",
+            placeholder: "Set destination"
+          %>
+        <%# end %>
+        <div id="journey-cart">
+          <%#= render 'components/card-list' %>
+        </div>
+        <%= submit_tag "GO TO MAP", class: "btn button-call-to-action center-block" %>
       <% end %>
-      <div class="list-business-spacer"></div>
-      <%= form_tag root_path, method: :get do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control form-grey",
-          id: "flat_address_end",
-          placeholder: "End location"
-        %>
-      <% end %>
-      <div id="journey-cart">
-        <%#= render 'components/card-list' %>
-      </div>
-      <%= link_to "GO TO MAP", map_path, class: "btn button-call-to-action center-block", style: "margin-top: 30px; width: 130px" %>
     </div>
   </div>
 </div>
