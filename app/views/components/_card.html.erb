@@ -42,7 +42,7 @@
         <%= f.submit "ADD", class: "btn primary-button" %>
       <% end %>
       <a href="#" id="map-button" class="btn secondary-button" data-toggle="modal" data-target="#<%=business.id %>">DETAILS</a>
-      <%= render "components/info_modal", {business: business, today: today_hours, is_open: is_open} %>
+      <%= render "components/info_modal", {business: business, is_open: is_open} %>
     </div>
   </div>
 </div>
