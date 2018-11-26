@@ -37,7 +37,7 @@
                 <p class="review-content">"<%= review.content %>"</p>
                 <p class="review-poster">
                   <strong><%= review.author_name.split(" ").each {|word| word.capitalize!}.join (" ")%></strong>
-                   gave this business <%= review.rating %> stars
+                   <i>gave this business <%= review.rating %> stars</i>
                  </p>
                 <br>
                 <% end %>
