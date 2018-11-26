@@ -21,6 +21,8 @@
   margin-left: 5px;
 }
 .tiny-card {
+  justify-content: center;
+  align-items: center;
   td {
     padding-top: 4px;
     font-family: Open Sans;
@@ -31,6 +33,7 @@
     text-align: justify;
   }
 }
+
 .modal-image img {
   border-radius: 2px;
 }
