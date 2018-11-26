@@ -25,6 +25,7 @@
               <%= render 'components/stars', business: business %>
                 <p><%= business.ratings %></p>
                 <p id='card-rating-number'></p>
+                <a href="#" class="rating-prompt">Leave your own rating</a>
               </div>
               <p class= "contact">
                 <i class="fas fa-phone"></i><%= business.phone %>
@@ -44,9 +45,18 @@
                 <% end %>
               <% end %>
             </div>
+            </div>
+            <div class="modal-action">
+              <%= simple_form_for(business, url: journey_path, method: :post, remote: true) do |f| %>
+              <%= f.hidden_field :id %>
+              <%= f.submit "ADD TO JOURNEY", class: "btn primary-button" %>
+              <% end %>
+              <% if business.website != nil %>
+                <a href="<%= business.website %>" class="btn secondary-button">GO TO WEBSITE</a>
+              <% end %>
+            </div>
           </div>
           <button type="button" class="btn font-awesome-button modal-button" data-dismiss="modal"><i class="fas fa-times"></i></button>
-        </div>
       </div>
     </div>
   </div>
