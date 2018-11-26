@@ -6,6 +6,7 @@
     font-size: 78px;
     text-align: center;
     color: white;
+    margin-bottom: 25px;
   }
   h2 {
     font-size: 30px;
@@ -17,16 +18,22 @@
     width: 70%;
   }
   span {
-    font-size: 30px;
+    font-size: 20px;
     text-align: center;
     color: white;
     margin-bottom: 70px;
-    padding-right: 10px;
-  }
+    }
 }
 .invisible-box {
   height: 100px;
 }
 .element-inline {
   display: flex;
+  width: 100%;
+  opacity: 0.9;
+  > span {
+    width: 50%;
+    text-align: right;
+    padding-right: 5px;
+  }
 }
