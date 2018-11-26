@@ -22,20 +22,20 @@
             <div class="modal-business-info">
               <h1 class="modal-title"><%= business.name %></h1>
               <div class="card-rating">
-              <%= render 'components/stars', business: business %>
+                <%= render 'components/stars', business: business %>
                 <p><%= business.ratings %></p>
                 <p id='card-rating-number'></p>
-                <a href="#" class="rating-prompt">Leave your own rating</a>
+                <a href="#" class="rating-prompt">Rate this business</a>
               </div>
               <p class= "contact">
-                <% if business.phone.nil? %>
+              <% if business.phone.nil? %>
                 <i class="fas fa-phone-slash"></i>Phone number unavailable
                 <br>
-                <% else %>
+              <% else %>
                 <i class="fas fa-phone"></i><%= business.phone %>
                 <br>
-                <% end %>
-                <i class="fas fa-address-card"></i><%= business.shortaddress.chomp(", Montréal") %></p>
+              <% end %>
+              <i class="fas fa-address-card"></i><%= business.shortaddress.chomp(", Montréal") %></p>
               </div>
               <br>
               <% business.reviews.each_with_index do |review, i|%>
@@ -44,24 +44,26 @@
                     <p class="review-content">"<%= review.content %>"</p>
                     <p class="review-poster">
                       <strong><%= review.author_name.split(" ").each {|word| word.capitalize!}.join (" ")%></strong>
-                      <i>gave this business <%= review.rating %> stars</i>
+                      gave this business <%= review.rating %> stars
                     </p>
                   </div>
                 <% end %>
               <% end %>
-            </div>
-            </div>
-            <div class="modal-action">
-              <%= simple_form_for(business, url: journey_path, method: :post, remote: true) do |f| %>
-              <%= f.hidden_field :id %>
-              <%= f.submit "ADD TO JOURNEY", class: "btn primary-button" %>
-              <% end %>
-              <% if business.website != nil %>
-                <a href="<%= business.website %>" class="btn secondary-button">GO TO WEBSITE</a>
-              <% end %>
+              <div class="modal-action">
+                <%= simple_form_for(business, url: journey_path, method: :post, remote: true) do |f| %>
+                  <%= f.hidden_field :id %>
+                  <%= f.submit "ADD", class: "btn primary-button" %>
+                <% end %>
+                <% if business.website != nil %>
+                  <a href="<%= business.website %>" class="btn secondary-button">CHECK WEBSITE</a>
+                <% end %>
+              </div>
             </div>
           </div>
-          <button type="button" class="btn font-awesome-button modal-button" data-dismiss="modal"><i class="fas fa-times"></i></button>
+          <button type="button" class="btn font-awesome-button modal-button" data-dismiss="modal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
       </div>
     </div>
   </div>
