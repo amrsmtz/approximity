@@ -1,4 +1,11 @@
-<div class="status-background">
-  <i class="fas fa-clock"></i>
-  <p>OPEN</p>
-</div>
+<% if is_open %>
+  <div class="open-background">
+    <i class="fas fa-clock"></i>
+    <p>OPEN</p>
+  </div>
+<% else %>
+  <div class="closed-background">
+    <i class="far fa-clock"></i>
+    <p>CLOSED</p>
+  </div>
+<% end %>
