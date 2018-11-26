@@ -16,10 +16,15 @@
             <div class="tiny-card">
               <img class= "modal-image" src="https://picsum.photos/200">
               <%= render "components/hours_table", {business: business} %>
+                <div class="modal-action">
                 <%= simple_form_for(business, url: journey_path, method: :post, remote: true) do |f| %>
                 <%= f.hidden_field :id %>
                 <%= f.submit "ADD", class: "btn primary-button" %>
               <% end %>
+              <% if business.website != nil %>
+                <a href="<%= business.website %>" class="btn secondary-button">WEBSITE</a>
+              <% end %>
+              </div>
             </div>
           </div>
           <div class="col-xs-9">
