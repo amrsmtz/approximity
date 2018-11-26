@@ -1,23 +1,13 @@
 <table class="hours">
-  <tr>
-    <td><%= business.hours[0] %></td>
-  </tr>
-  <tr>
-    <td><%= business.hours[1] %></td>
-  </tr>
-  <tr>
-    <td><%= business.hours[2] %></td>
-  </tr>
-  <tr>
-    <td><%= business.hours[3] %></td>
-  </tr>
-  <tr>
-    <td><%= business.hours[4] %></td>
-  </tr>
-  <tr>
-    <td><%= business.hours[5] %></td>
-  </tr>
-  <tr>
-    <td><%= business.hours[6] %></td>
-  </tr>                                                            
+  <%business.hours.each_with_index do |day, i| %>
+    <% if i == Date.today.wday-1 %>
+    <tr>
+      <td><strong><%= day %></strong></td>
+    </tr>
+    <% else %>
+    <tr>
+      <td><%= day %></td>
+    </tr>
+    <% end %>
+  <% end %>
 </table>

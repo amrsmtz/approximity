@@ -13,7 +13,13 @@
 <div class="card">
   <div class="card-image">
     <div class="card-status">
-      <%= render 'components/status' %>
+      <% if business.hours[Date.today.wday-1].include? "Closed" %>
+        <% is_open = false %>
+      <% else %>
+        <% today_hours = business.hours[Date.today.wday-1].split(": ").second.split(" – ").map { |hour| Time.parse(hour) }%>
+        <% is_open = (Time.now > today_hours[0] && Time.now < today_hours[1]) %>
+      <% end %>
+      <%= render 'components/status', is_open: is_open %>
     </div>
   </div>
   <div class="card-content">
@@ -36,7 +42,7 @@
         <%= f.submit "ADD", class: "btn primary-button" %>
       <% end %>
       <a href="#" id="map-button" class="btn secondary-button" data-toggle="modal" data-target="#<%=business.id %>">DETAILS</a>
-      <%= render "components/info_modal", {business: business} %>
+      <%= render "components/info_modal", {business: business, is_open: is_open} %>
     </div>
   </div>
 </div>

@@ -9,7 +9,7 @@
         </div>
         <div class="modal-body-content">
           <div class="modal-status">
-          <%= render 'components/status' %>
+          <%= render 'components/status', is_open: is_open %>
           </div>
         <div class="row">
           <div class="col-xs-3">
@@ -34,12 +34,13 @@
               <br>
               <% business.reviews.each_with_index do |review, i|%>
                 <%  if i <= 3 %>
-                <p class="review-content">"<%= review.content %>"</p>
-                <p class="review-poster">
-                  <strong><%= review.author_name.split(" ").each {|word| word.capitalize!}.join (" ")%></strong>
-                   <i>gave this business <%= review.rating %> stars</i>
-                 </p>
-                <br>
+                  <div class="modal-review">
+                    <p class="review-content">"<%= review.content %>"</p>
+                    <p class="review-poster">
+                      <strong><%= review.author_name.split(" ").each {|word| word.capitalize!}.join (" ")%></strong>
+                      <i>gave this business <%= review.rating %> stars</i>
+                    </p>
+                  </div>
                 <% end %>
               <% end %>
             </div>
