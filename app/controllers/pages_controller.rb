@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
   def home
-    session[:journey] = []
+    if session[:journey].nil?
+      session[:journey] = []
+    end
     if params[:query].present?
       @businesses = Business.search_by_name_and_category(params[:query])
     else
