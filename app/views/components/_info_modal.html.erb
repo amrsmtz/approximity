@@ -35,7 +35,10 @@
               <% business.reviews.each_with_index do |review, i|%>
                 <%  if i <= 3 %>
                 <p class="review-content">"<%= review.content %>"</p>
-                <!-- <p class="review-poster">- <%= review.name %></p> -->
+                <p class="review-poster">
+                  <strong><%= review.author_name.split(" ").each {|word| word.capitalize!}.join (" ")%></strong>
+                   gave this business <%= review.rating %> stars
+                 </p>
                 <br>
                 <% end %>
               <% end %>
