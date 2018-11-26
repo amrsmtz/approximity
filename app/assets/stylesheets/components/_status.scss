@@ -1,6 +1,27 @@
-.status-background {
+.open-background {
   background-color: $green;
-  width: 73px;
+  width: 60px;
+  padding: 2px;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  p {
+    margin: 0;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+  }
+  i {
+    color: white;
+    font-size: 10px;
+    padding-right: 5px;
+  }
+}
+
+.closed-background {
+  background-color: $red;
+  width: 70px;
   padding: 2px;
   border-radius: 2px;
   display: flex;

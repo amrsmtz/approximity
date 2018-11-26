@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-puts "destroying Db"
+puts "destroying previous db..."
 Business.destroy_all
 
 require "byebug"
@@ -33,7 +33,7 @@ drycleanerid = JSON.parse(drycleaner_serialized)
 
 
 (bakeryid["results"] + shoemakerid["results"] + butcherid["results"] + drycleanerid["results"]).each do |result|
- ids << result["place_id"]
+  ids << result["place_id"]
 end
 
 ids.each do |id|
@@ -59,6 +59,11 @@ ids.each do |id|
     photo_url = open("https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{fotoref}&#{parameters}").base_uri.to_s
   end
 
+
+
+  begin
+    # Taking info from Google Places
+
     name = details["name"]
     shortaddress = details["vicinity"]
     longaddress = details["formatted_address"]
@@ -70,7 +75,7 @@ ids.each do |id|
     price_level = details["price_level"]
     latitude = details["geometry"]["location"]["lat"]
     longitude = details["geometry"]["location"]["lng"]
-
+    # Creating the business in the db
     business = Business.create!(
       name: name,
       shortaddress: shortaddress,
@@ -85,7 +90,7 @@ ids.each do |id|
       longitude: longitude,
       photo: photo_url,
       )
-
+    # Implementing the reviews
     three_reviews = details["reviews"]
     three_reviews.first(5).each do |review|
       rating = review["rating"]
@@ -102,10 +107,12 @@ ids.each do |id|
   end
 end
 
+
 # Business.find_by(name: "").update(photo: "")
 
 # https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=CmRaAAAAHBB9g9c1CJ7ULV2pfppJUrlWDW45UT7L_3bgUuAyU8d0nUYSdx69Fv3vpk_As4Hyp4ieOSMvwJY_sGupaQKNogl1Gr_kujKO014I8Zs_BGFtNt7vtedr3feyNGUEX_48EhAcsTjnA_wgmkgRJwhNbxDiGhQ6aFYk4_-OkPB5ssd7DWzAGzX6Gg&key=AIzaSyDMqN5rmD_oqC4eIOlYxBKA_JdTEpk2fAc
 
+puts 'seeding finished!'
 
 
 # storedb = []

@@ -1,10 +1,11 @@
 .modal-body-content {
   position: relative;
   padding: 70px;
+  justify-content: center;
 
-  p.description {
+  p.review-content {
     font-family: Open Sans;
-    font-style: normal;
+    font-style: italic;
     font-weight: normal;
     line-height: normal;
     font-size: 16px;
@@ -21,6 +22,8 @@
   margin-left: 5px;
 }
 .tiny-card {
+  justify-content: center;
+  align-items: center;
   td {
     padding-top: 4px;
     font-family: Open Sans;
@@ -31,6 +34,7 @@
     text-align: justify;
   }
 }
+
 .modal-image img {
   border-radius: 2px;
 }
@@ -61,3 +65,19 @@
   right: 10px;
 }
 
+.modal-review {
+  padding: 20px;
+  background-color: $light-gray;
+  border-radius: 2px;
+  margin-bottom: 10px;
+}
+
+.rating-prompt {
+  padding-left: 30px;
+}
+
+.modal-action {
+  margin-top: 15px;
+  justify-content: flex-end;
+  display: flex;
+}

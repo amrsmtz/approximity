@@ -32,6 +32,7 @@ class PagesController < ApplicationController
   end
 
   def map
+    @origin = params[:origin]
     @business_ids = session[:journey]
     @businesses = @business_ids.map { |id| Business.find(id) }
     @markers = @businesses.map do |business|

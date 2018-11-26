@@ -9,7 +9,7 @@
         </div>
         <div class="modal-body-content">
           <div class="modal-status">
-          <%= render 'components/status' %>
+          <%= render 'components/status', is_open: is_open %>
           </div>
         <div class="row">
           <div class="col-xs-3">
@@ -25,18 +25,43 @@
               <%= render 'components/stars', business: business %>
                 <p><%= business.ratings %></p>
                 <p id='card-rating-number'></p>
+                <a href="#" class="rating-prompt">Leave your own rating</a>
               </div>
               <p class= "contact">
+                <% if business.phone.nil? %>
+                <i class="fas fa-phone-slash"></i>Phone number unavailable
+                <br>
+                <% else %>
                 <i class="fas fa-phone"></i><%= business.phone %>
                 <br>
+                <% end %>
                 <i class="fas fa-address-card"></i><%= business.shortaddress.chomp(", Montréal") %></p>
               </div>
               <br>
-              <p class="description"><%= business.reviews.first.content%></p>
+              <% business.reviews.each_with_index do |review, i|%>
+                <%  if i <= 3 %>
+                  <div class="modal-review">
+                    <p class="review-content">"<%= review.content %>"</p>
+                    <p class="review-poster">
+                      <strong><%= review.author_name.split(" ").each {|word| word.capitalize!}.join (" ")%></strong>
+                      <i>gave this business <%= review.rating %> stars</i>
+                    </p>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+            </div>
+            <div class="modal-action">
+              <%= simple_form_for(business, url: journey_path, method: :post, remote: true) do |f| %>
+              <%= f.hidden_field :id %>
+              <%= f.submit "ADD TO JOURNEY", class: "btn primary-button" %>
+              <% end %>
+              <% if business.website != nil %>
+                <a href="<%= business.website %>" class="btn secondary-button">GO TO WEBSITE</a>
+              <% end %>
             </div>
           </div>
           <button type="button" class="btn font-awesome-button modal-button" data-dismiss="modal"><i class="fas fa-times"></i></button>
-        </div>
       </div>
     </div>
   </div>
