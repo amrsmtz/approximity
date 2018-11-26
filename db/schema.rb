@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_26_142428) do
+ActiveRecord::Schema.define(version: 2018_11_26_202617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2018_11_26_142428) do
     t.string "website"
     t.float "ratings"
     t.string "hours", default: [], array: true
+    t.string "photo"
   end
 
   create_table "journey_businesses", force: :cascade do |t|
