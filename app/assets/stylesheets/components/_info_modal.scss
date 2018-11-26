@@ -1,6 +1,7 @@
 .modal-body-content {
   position: relative;
   padding: 70px;
+  justify-content: center;
 
   p.review-content {
     font-family: Open Sans;
@@ -77,5 +78,6 @@
 
 .modal-action {
   margin-top: 15px;
+  justify-content: center;
   display: flex;
 }
