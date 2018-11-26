@@ -28,8 +28,13 @@
                 <a href="#" class="rating-prompt">Leave your own rating</a>
               </div>
               <p class= "contact">
+                <% if business.phone.nil? %>
+                <i class="fas fa-phone-slash"></i>Phone Number Unavailable
+                <br>
+                <% else %>
                 <i class="fas fa-phone"></i><%= business.phone %>
                 <br>
+                <% end %>
                 <i class="fas fa-address-card"></i><%= business.shortaddress.chomp(", Montréal") %></p>
               </div>
               <br>
