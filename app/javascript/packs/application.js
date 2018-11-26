@@ -14,7 +14,7 @@ var options = {
 }
 
 if (document.getElementById('typedjs')) {
-  var typed = "Look for: " + new Typed("#typedjs", options);
+  var typed = "Look for:" + new Typed("#typedjs", options);
 }
 
 // Mapbox Map page
