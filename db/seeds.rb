@@ -59,9 +59,6 @@ ids.each do |id|
     photo_url = open("https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{fotoref}&#{parameters}").base_uri.to_s
   end
 
-
-
-  begin
     # Taking info from Google Places
 
     name = details["name"]
@@ -110,7 +107,6 @@ end
 
 # Business.find_by(name: "").update(photo: "")
 
-# https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=CmRaAAAAHBB9g9c1CJ7ULV2pfppJUrlWDW45UT7L_3bgUuAyU8d0nUYSdx69Fv3vpk_As4Hyp4ieOSMvwJY_sGupaQKNogl1Gr_kujKO014I8Zs_BGFtNt7vtedr3feyNGUEX_48EhAcsTjnA_wgmkgRJwhNbxDiGhQ6aFYk4_-OkPB5ssd7DWzAGzX6Gg&key=AIzaSyDMqN5rmD_oqC4eIOlYxBKA_JdTEpk2fAc
 
 puts 'seeding finished!'
 
