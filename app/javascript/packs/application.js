@@ -49,7 +49,8 @@ if (mapElement) { // only build a map if there's a div#map to inject into
     style: 'mapbox://styles/mapbox/streets-v10'
   });
 
-  // add the markers to the map
+  // Add the markers to the map
+
   const markers = JSON.parse(mapElement.dataset.markers);
 
   markers.forEach((marker) => {
@@ -58,7 +59,8 @@ if (mapElement) { // only build a map if there's a div#map to inject into
       .addTo(map);
   })
 
-  // recenter map accordng to markers
+  // Recenter map accordng to markers
+
   if (markers.length === 0) {
     map.setZoom(1);
   } else if (markers.length === 1) {
@@ -72,18 +74,25 @@ if (mapElement) { // only build a map if there's a div#map to inject into
     map.fitBounds(bounds, { duration: 0, padding: 75 })
   }
 
-  // const directions = new MapboxDirections({
-  //   accessToken: mapboxgl.accessToken,
-  //   unit: 'metric',
-  //   profile: 'mapbox/walking',
-  //   controls: {
-  //     inputs: false
-  //   }
-  // });
+  // Add directions
 
-  // directions.setOrigin([-73.567256, 45.5016889]);
+  const directions = new MapboxDirections({
+    accessToken: mapboxgl.accessToken,
+    unit: 'metric',
+    profile: 'mapbox/walking',
+    controls: {
+      inputs: false
+    }
+  });
 
-  // directions.setDestination([-73.6, 45.5016889]);
+  // Set origin
+  directions.setOrigin([-73.567256, 45.5016889]);
 
-  // map.addControl(directions, 'top-left');
+  // Set waypoints
+
+
+  // Set destination
+  directions.setDestination([-73.6, 45.5016889]);
+
+  map.addControl(directions, 'top-left');
 }
