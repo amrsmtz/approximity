@@ -8,9 +8,6 @@
 puts "destroying previous db..."
 Business.destroy_all
 
-require "byebug"
-
-
 parameters = "key=#{ENV['API_PLACES_KEY']}"
 bakery = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=bakery+in+montreal&#{parameters}"
 shoemaker = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=shoemaker+in+montreal&#{parameters}"
