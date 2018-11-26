@@ -8,6 +8,8 @@
 puts "destroying previous db..."
 Business.destroy_all
 
+require "byebug"
+
 
 parameters = "key=#{ENV['API_PLACES_KEY']}"
 bakery = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=bakery+in+montreal&#{parameters}"
@@ -38,9 +40,30 @@ ids.each do |id|
   details_url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=#{id}&#{parameters}"
   details_serialized = open(details_url).read
   details = JSON.parse(details_serialized)["result"]
+  photosarray = details["photos"]
+
+  photo_url = nil
+
+  begin
+  # Try to find a good photo
+  photosarray.each do |foto|
+    if foto["html_attributions"].first.include?(details["name"])
+      fotoref = foto["photo_reference"]
+      photo_url = open("https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{fotoref}&#{parameters}").base_uri.to_s
+    end
+  end
+
+  # If you cannot, take the first one
+  if photo_url.nil?
+    fotoref = photosarray.first["photo_reference"]
+    photo_url = open("https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{fotoref}&#{parameters}").base_uri.to_s
+  end
+
+
 
   begin
     # Taking info from Google Places
+
     name = details["name"]
     shortaddress = details["vicinity"]
     longaddress = details["formatted_address"]
@@ -65,6 +88,7 @@ ids.each do |id|
       price_level: price_level,
       latitude: latitude,
       longitude: longitude,
+      photo: photo_url,
       )
     # Implementing the reviews
     three_reviews = details["reviews"]
@@ -83,7 +107,13 @@ ids.each do |id|
   end
 end
 
+
+# Business.find_by(name: "").update(photo: "")
+
+# https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=CmRaAAAAHBB9g9c1CJ7ULV2pfppJUrlWDW45UT7L_3bgUuAyU8d0nUYSdx69Fv3vpk_As4Hyp4ieOSMvwJY_sGupaQKNogl1Gr_kujKO014I8Zs_BGFtNt7vtedr3feyNGUEX_48EhAcsTjnA_wgmkgRJwhNbxDiGhQ6aFYk4_-OkPB5ssd7DWzAGzX6Gg&key=AIzaSyDMqN5rmD_oqC4eIOlYxBKA_JdTEpk2fAc
+
 puts 'seeding finished!'
+
 
 # storedb = []
 
