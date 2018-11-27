@@ -44,6 +44,7 @@ const mapElement = document.getElementById('map');
 if (mapElement) { // only build a map if there's a div#map to inject into
   mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
 
+  const markers = JSON.parse(mapElement.dataset.markers);
   // Initialize the map
 
   const map = new mapboxgl.Map({
@@ -51,31 +52,43 @@ if (mapElement) { // only build a map if there's a div#map to inject into
     style: 'mapbox://styles/mapbox/streets-v10'
   });
 
+  const bounds = new mapboxgl.LngLatBounds();
+  markers.forEach((marker) => {
+    bounds.extend([marker.lng, marker.lat]);
+  });
+  map.fitBounds(bounds, { duration: 0, padding: 200, offset: [-160, 0] })
+
+  const intervalId = setInterval(() => {
+    if (map.isMoving()) {
+      map.stop();
+      clearInterval(intervalId);
+    }
+  }, 1)
+
   // Add directions
 
   const directions = new MapboxDirections({
     accessToken: mapboxgl.accessToken,
     unit: 'metric',
     profile: 'mapbox/walking',
+    interactive: false,
     controls: {
-      inputs: false
+      inputs: false,
+      instructions: false
     }
   });
 
-  const markers = JSON.parse(mapElement.dataset.markers);
   const originValue = document.getElementById('flat_address_start').value
+
+
+
+  map.addControl(directions);
 
   map.on('load', function() {
     directions.setOrigin(originValue);
-    let i = 0;
-    markers.forEach((marker) => {
+    markers.forEach((marker, i) => {
       directions.addWaypoint(i, [marker.lng, marker.lat]);
-      if (i === markers.length - 1) {
-        directions.setDestination([marker.lng, marker.lat]);
-      }
-      i += 1;
     });
+    directions.setDestination(originValue);
   });
-
-  map.addControl(directions, 'top-left');
 }

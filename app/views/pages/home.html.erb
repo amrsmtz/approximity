@@ -35,12 +35,9 @@
             placeholder: "Set destination"
           %>
         <%# end %>
-      <% end %>
-      <div id="journey-cart">
-        <%#= render 'components/card-list' %>
-      </div>
-      <%= form_tag map_path, method: :get do %>
-        <%= hidden_field_tag 'origin' %>
+        <div id="journey-cart">
+          <%#= render 'components/card-list' %>
+        </div>
         <%= submit_tag "GO TO MAP", class: "btn button-call-to-action center-block" %>
       <% end %>
     </div>
