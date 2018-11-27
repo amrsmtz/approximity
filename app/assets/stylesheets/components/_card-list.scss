@@ -4,6 +4,13 @@
   margin-bottom: 10px;
   display: flex;
   position: relative;
+  border-radius: 3px;
+}
+.card-list-image img {
+  width: 90px;
+  height: 100%;
+  background-size: cover;
+  border-radius: 3px;
 }
 .card-list-content {
   width: calc(100% - 90px);
