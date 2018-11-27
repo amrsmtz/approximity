@@ -4,7 +4,7 @@
   </div>
   <div class="card-list-content">
     <div class="card-list-content-inline">
-      <h1><%= truncate(business.name, length: 30) %></h1>
+      <h1><%= truncate(business.name, length: 25) %></h1>
        <div id="delete-business">
           <%= link_to journey_path(business_id: business.id), class: 'data-type-button btn btn-negative', method: :delete, remote: true do %>
             <i class="fas fa-times"></i>
@@ -12,9 +12,8 @@
         </div>
       </a>
     </div>
-    <div class="card-list-rating">
-      <%= render 'components/stars', business: business %>
-      <p><%= business.ratings %></p>
+    <div class="card-list-content-inline">
+      <p><%= business.shortaddress.chomp(", Montréal").chomp(", Montreal") %></p>
     </div>
     <div class="card-list-content-inline">
       <p><%= business.phone %></p>

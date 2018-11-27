@@ -24,9 +24,9 @@
         <%= business.phone %>
       </p>
     </div>
-    <p class="card-description">
-      <%= truncate(business.reviews.first.content, length: 70) %>
-    </p>
+    <!-- <p class="card-description"> -->
+      <%#= truncate(business.reviews.first.content, length: 70) %>
+    <!-- </p> -->
     <div class="card-action">
       <%= simple_form_for(business, url: journey_path, method: :post, remote: true) do |f| %>
         <%= f.hidden_field :id %>

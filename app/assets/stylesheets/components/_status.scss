@@ -1,7 +1,7 @@
 .open-background {
   background-color: $green;
   width: 60px;
-  padding: 3px;
+  padding: 2px 0 3px 0;
   border-radius: 2px;
   display: flex;
   align-items: center;
@@ -22,7 +22,7 @@
 .closed-background {
   background-color: $red;
   width: 70px;
-  padding: 3px;
+  padding: 2px 0 3px 0;
   border-radius: 2px;
   display: flex;
   align-items: center;
