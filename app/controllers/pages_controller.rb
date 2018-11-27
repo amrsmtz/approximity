@@ -22,7 +22,7 @@ class PagesController < ApplicationController
   end
 
   def delete_from_journey
-    @business_id = params[:business][:id].to_i
+    @business_id = params[:business_id].to_i
     index_to_destroy = session[:journey].find_index { |business| business == @business_id }
     session[:journey].delete_at(index_to_destroy)
     respond_to do |format|

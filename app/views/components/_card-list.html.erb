@@ -6,11 +6,8 @@
     <div class="card-list-content-inline">
       <h1><%= truncate(business.name, length: 30) %></h1>
        <div id="delete-business">
-          <%= simple_form_for(business, url: journey_path, method: :delete, remote: true) do |f| %>
-            <%= f.hidden_field :id %>
-            <%= button_tag type: 'submit', class: 'btn font-awesome-button' do %>
-              <i class="fas fa-times"></i>
-            <% end %>
+          <%= link_to journey_path(business_id: business.id), class: 'data-type-button btn btn-negative', method: :delete, remote: true do %>
+            <i class="fas fa-times"></i>
           <% end %>
         </div>
       </a>
