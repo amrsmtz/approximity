@@ -1,16 +1,6 @@
-<!-- CSS -->
-<style>
-  .card-list-image {
-    background-image: url(<%= image_path('business.jpg') %>);
-    width: 90px;
-    height: 90px;
-    background-size: cover;
-  }
-</style>
-
-<!-- HTML -->
 <div class="card-list" id="card-list-<%= business.id %>">
   <div class="card-list-image">
+    <img src="<%= business.photo.html_safe %>">
   </div>
   <div class="card-list-content">
     <div class="card-list-content-inline">
