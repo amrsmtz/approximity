@@ -20,6 +20,8 @@
       <%= render 'components/card-list', business: business %>
     <% end %>
   </div>
-  <%= link_to "BACK", root_path, class: "btn button-call-to-action center-block", style: "margin-top: 30px; width: 130px" %>
+  <div class="map-action">
+    <%= link_to "BACK", root_path, class: "btn button-call-to-action center-block" %>
+  </div>
 </div>
 <%= render "components/fullpage_map", markers: @markers %>

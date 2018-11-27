@@ -6,7 +6,7 @@
   position: relative;
 }
 .card-list-content {
-  width: 100%;
+  width: calc(100% - 90px);
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -14,7 +14,7 @@
   h1 {
     font-size: 16px;
     font-weight: bold;
-    margin: 0;
+    margin: 7px 0 0 0;
   }
   p {
     font-size: 12px;
