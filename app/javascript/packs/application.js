@@ -65,7 +65,45 @@ if (mapElement) { // only build a map if there's a div#map to inject into
   const markers = JSON.parse(mapElement.dataset.markers);
   const originValue = document.getElementById('flat_address_start').value
 
+  let features = []
+
+  markers.forEach((marker) => {
+    features.push({"type":"Feature","geometry":{"type":"Point","coordinates":[marker.lng, marker.lat]}});
+  });
+
+  const geojson =  {
+          type: "geojson",
+          data: {
+            type: "FeatureCollection",
+            features: features }
+          }
+
+  geojson.data.features.forEach(function(marker) {
+    // create a HTML element for each feature
+    var el = document.createElement('div');
+    el.className = 'marker';
+
+    // make a marker for each feature and add to the map
+    new mapboxgl.Marker(el)
+    .setLngLat(marker.geometry.coordinates)
+    .addTo(map);
+  });
+
   map.on('load', function() {
+  //   map.loadImage("https://i.imgur.com/MK4NUzI.png", function(error, image) {
+  //     if (error) throw error;
+  //     map.addImage("custom-marker", image);
+  //     /* Style layer: A style layer ties together the source and image and specifies how they are displayed on the map. */
+  //     map.addLayer({
+  //       id: "markers",
+  //       type: "symbol",
+  //        Source: A data source specifies the geographic coordinate where the image marker gets placed. 
+  //       source: geoJson,
+  //         layout: {
+  //           "icon-image": "custom-marker",
+  //         }
+  //     });
+  //   });
     directions.setOrigin(originValue);
     let i = 0;
     markers.forEach((marker) => {
