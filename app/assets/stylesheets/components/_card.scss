@@ -7,6 +7,13 @@
     margin: 0;
   }
 }
+.card-image {
+  width: 100%;
+  height: 175px;
+  background-size: cover;
+  position: relative;
+  border-radius: 3px;
+}
 .card-status {
   position: absolute;
   top: 10px;

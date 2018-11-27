@@ -27,7 +27,6 @@
           id: 'flat_address_start',
           placeholder: "Set origin"
         %>
-        <div class="list-business-spacer"></div>
         <%#= form_tag root_path, method: :get do %>
           <%#= text_field_tag :query,
             params[:query],
@@ -36,9 +35,12 @@
             placeholder: "Set destination"
           %>
         <%# end %>
-        <div id="journey-cart">
-          <%#= render 'components/card-list' %>
-        </div>
+      <% end %>
+      <div id="journey-cart">
+        <%#= render 'components/card-list' %>
+      </div>
+      <%= form_tag map_path, method: :get do %>
+        <%= hidden_field_tag 'origin' %>
         <%= submit_tag "GO TO MAP", class: "btn button-call-to-action center-block" %>
       <% end %>
     </div>

@@ -6,6 +6,7 @@
     <div class="card-list-content-inline">
       <h1><%= business.name %></h1>
        <div id="delete-business">
+          <a href=""></a>
           <%= simple_form_for(business, url: journey_path, method: :delete, remote: true) do |f| %>
             <%= f.hidden_field :id %>
             <%= button_tag type: 'submit', class: 'btn font-awesome-button' do %>
