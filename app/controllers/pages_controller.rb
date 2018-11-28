@@ -42,7 +42,7 @@ class PagesController < ApplicationController
     @markers = [{ lat: coords_array.first, lng: coords_array.last }]
 
     @businesses.each do |business|
-      @markers << { lat: business.latitude, lng: business.longitude }
+      @markers << { lat: business.latitude, lng: business.longitude, popHTML: render_to_string(partial: "components/popup", locals: { business: business }) }
     end
   end
 end

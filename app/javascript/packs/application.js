@@ -75,11 +75,19 @@ if (mapElement) { // only build a map if there's a div#map to inject into
 
     // make a marker for each feature and add to the map
     if (i !== 0) {
+      var popup = new mapboxgl
+        .Popup({ offset: 25 })
+        .setHTML(marker.popHTML);
+
       new mapboxgl.Marker(el)
       .setLngLat([marker.lng, marker.lat])
+      .setPopup(popup)
       .addTo(map);
     }
   });
+
+
+
 
   map.fitBounds(bounds, { duration: 0, padding: 200, offset: [-160, 0] })
 
