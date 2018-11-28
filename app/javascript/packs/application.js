@@ -44,32 +44,42 @@ const mapElement = document.getElementById('map');
 if (mapElement) { // only build a map if there's a div#map to inject into
   mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
 
-  const markers = JSON.parse(mapElement.dataset.markers);
   // Initialize the map
 
+  const markers = JSON.parse(mapElement.dataset.markers);
   const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v10'
   });
 
   const bounds = new mapboxgl.LngLatBounds();
-  markers.forEach((marker) => {
+
+  console.log(markers);
+
+  markers.forEach((marker, i) => {
+    // set the boundaries of the map
     bounds.extend([marker.lng, marker.lat]);
+
+    // create HTML pins for the markers
     var el = document.createElement('div');
-    el.className = 'markers';
-    el.style.backgroundImage = 'url(https://i.imgur.com/MK4NUzI.png)';
+    el.className = 'marker';
+    el.innerHTML += '<i class="fas fa-map-marker"></i>'
+    // el.style.backgroundImage = 'url(https://i.imgur.com/MK4NUzI.png)';
 
     // make a marker for each feature and add to the map
-    new mapboxgl.Marker(el)
-    .setLngLat([marker.lng, marker.lat])
-    .addTo(map);
+    if (i !== 0) {
+      new mapboxgl.Marker(el)
+      .setLngLat([marker.lng, marker.lat])
+      .addTo(map);
+    }
   });
+
   map.fitBounds(bounds, { duration: 0, padding: 200, offset: [-160, 0] })
 
   const intervalId = setInterval(() => {
     if (map.isMoving()) {
       map.stop();
-      clearInterval(intervalId);
+      // clearInterval(intervalId);
     }
   }, 1)
 
