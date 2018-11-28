@@ -4,9 +4,7 @@ var businessesHTML = "";
   businessesHTML= businessesHTML + "<%= j(render 'components/card', business: business) %>"
 <% end %>
 
-if (document.getElementById('flat_address_start_banner')) {
-  document.getElementById('flat_address_start').value = document.getElementById('flat_address_start_banner').value
-}
+document.getElementById('flat_address_start').value = document.getElementById('flat_address_start_banner').value
 
 var businessCards = document.getElementById('business-cards')
 businessCards.innerHTML = businessesHTML
@@ -21,5 +19,3 @@ if (banner !== null) {
     document.querySelector(".landing-banner").remove();
   }, 500)
 }
-
-

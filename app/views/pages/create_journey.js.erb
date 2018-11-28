@@ -1,3 +1,22 @@
+// Ajoute la carte à la liste
 var card = document.getElementById('journey-cart');
-card.insertAdjacentHTML("beforeend", '<%= j(render 'components/card-list', business: @business) %>');
+var cartItems = document.querySelectorAll('.card-list');
+// var clickedButtons = document.querySelectorAll(`#card-${<%= @business.id %>} input[type=submit]`);
+// var ids = []
 
+// cartItems.forEach(item => ids.push(item.dataset.id));
+// console.log(ids);
+
+
+card.insertAdjacentHTML("beforeend", '<%= j(render 'components/card-list', business: @business) %>');
+// clickedButtons.forEach(button => {
+//   console.log("button", button);
+//   button.setAttribute('disabled', true);
+// });
+
+
+
+// Supprime le label "Your list of shops is empty"
+if(document.getElementById('empty-label')) {
+  document.getElementById('empty-label').remove();
+}
