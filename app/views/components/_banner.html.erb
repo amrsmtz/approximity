@@ -19,10 +19,11 @@
       <div class="typedjs"><span id="typedjs"></span></div>
     </div>
     <%= form_tag root_path, method: :get, remote: true do %>
-      <%= text_field_tag :query,
-        params[:query],
+      <%= text_field_tag 'origin',
+        nil,
         class: "form-control form-white",
-        placeholder: "Find a business"
+        id: 'flat_address_start_banner',
+        placeholder: "Where are you?"
       %>
     <% end %>
     <div class="invisible-box"></div>

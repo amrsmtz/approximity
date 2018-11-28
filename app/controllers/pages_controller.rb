@@ -6,6 +6,7 @@ class PagesController < ApplicationController
       @businesses = Business.all
     end
 
+    @origin = params[:origin]
     respond_to do |format|
       format.html { session[:journey] = [] }
       format.js
