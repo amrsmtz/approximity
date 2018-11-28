@@ -1,3 +1,7 @@
+<% if business.ratings.nil? %>
+  <% business.ratings = 0 %>
+<% end %>
+
 <% number = business.ratings  %>
 
 <% while number > 0 %>

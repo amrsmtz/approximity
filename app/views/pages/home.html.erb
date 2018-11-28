@@ -22,7 +22,7 @@
     <div class="list-business-content">
       <%= form_tag map_path, method: :get do %>
         <%= text_field_tag 'origin',
-          nil,
+          @origin,
           class: "form-control form-grey",
           id: 'flat_address_start',
           placeholder: "Set origin"

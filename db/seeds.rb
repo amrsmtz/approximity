@@ -13,7 +13,11 @@ bakery = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=baker
 shoemaker = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=shoemaker+in+montreal&#{parameters}"
 butcher = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=butcher+in+montreal&#{parameters}"
 drycleaner = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=dry+cleaner+in+montreal&#{parameters}"
-
+library = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=library+in+montreal&#{parameters}"
+fruitsvegetable = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=fruit+vegetable+in+montreal&#{parameters}"
+hairdresser = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=hair+dresser+in+montreal&#{parameters}"
+flowers = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=flowers+in+montreal&#{parameters}"
+cheese = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=cheese+in+montreal&#{parameters}"
 ids = []
 
 bakery_serialized = open(bakery).read
@@ -28,8 +32,22 @@ butcherid = JSON.parse(butcher_serialized)
 drycleaner_serialized = open(drycleaner).read
 drycleanerid = JSON.parse(drycleaner_serialized)
 
+library_serialized = open(library).read
+libraryid = JSON.parse(library_serialized)
 
-(bakeryid["results"] + shoemakerid["results"] + butcherid["results"] + drycleanerid["results"]).each do |result|
+fruitsvegetable_serialized = open(fruitsvegetable).read
+fruitsvegetableid = JSON.parse(fruitsvegetable_serialized)
+
+hairdresser_serialized = open(hairdresser).read
+hairdresserid = JSON.parse(hairdresser_serialized)
+
+flowers_serialized = open(flowers).read
+flowersid = JSON.parse(flowers_serialized)
+
+cheese_serialized = open(cheese).read
+cheeseid = JSON.parse(cheese_serialized)
+
+(bakeryid["results"] + shoemakerid["results"] + butcherid["results"] + drycleanerid["results"] + libraryid["results"] + fruitsvegetableid["results"] + hairdresserid["results"] + flowersid["results"] + cheeseid["results"]).each do |result|
   ids << result["place_id"]
 end
 
