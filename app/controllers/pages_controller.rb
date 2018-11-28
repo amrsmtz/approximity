@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class PagesController < ApplicationController
   def home
     if params[:query].present?
@@ -37,12 +39,20 @@ class PagesController < ApplicationController
     @origin = params[:origin]
     @business_ids = session[:journey]
     @businesses = @business_ids.map { |id| Business.find(id) }
-    coords_array = Business.new(longaddress: @origin).geocode
+    coords_array = Business.new(longaddress: @origin).geocode || [-73.567256, 45.5016889]
 
-    @markers = [{ lat: coords_array.first, lng: coords_array.last }]
-
+    @markers = [{ lng: coords_array.last, lat: coords_array.first }]
     @businesses.each do |business|
-      @markers << { lat: business.latitude, lng: business.longitude }
+      @markers << { lng: business.longitude, lat: business.latitude }
+    end
+    # @markers << { lng: coords_array.last, lat: coords_array.first }
+    @json_string = @markers.map {|marker| marker.values.join(",")}.join(";")
+
+    @optimization_url = "https://api.mapbox.com/optimized-trips/v1/mapbox/walking/#{@json_string}?access_token=#{ENV['MAPBOX_API_KEY']}&source=first&roundtrip=true"
+
+    @optimized_route = JSON.parse(open(@optimization_url).read)
+    @markers = @optimized_route['waypoints'].map do |waypoint|
+      { lng: waypoint['location'][0], lat: waypoint['location'][1], index: waypoint["waypoint_index"] }
     end
   end
 end
