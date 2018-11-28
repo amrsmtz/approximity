@@ -43,7 +43,8 @@ class PagesController < ApplicationController
 
     @markers = [{ lng: coords_array.last, lat: coords_array.first }]
     @businesses.each do |business|
-      @markers << { lng: business.longitude, lat: business.latitude }
+
+      @markers << { lat: business.latitude, lng: business.longitude, popHTML: render_to_string(partial: "components/popup", locals: { business: business }) }
     end
     # @markers << { lng: coords_array.last, lat: coords_array.first }
     @json_string = @markers.map {|marker| marker.values.join(",")}.join(";")
@@ -53,6 +54,7 @@ class PagesController < ApplicationController
     @optimized_route = JSON.parse(open(@optimization_url).read)
     @markers = @optimized_route['waypoints'].map do |waypoint|
       { lng: waypoint['location'][0], lat: waypoint['location'][1], index: waypoint["waypoint_index"] }
+
     end
   end
 end
