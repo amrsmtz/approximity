@@ -1,3 +1,4 @@
+// Ajoute la carte à la liste
 var card = document.getElementById('journey-cart');
 var cartItems = document.querySelectorAll('.card-list');
 // var clickedButtons = document.querySelectorAll(`#card-${<%= @business.id %>} input[type=submit]`);
@@ -15,3 +16,7 @@ card.insertAdjacentHTML("beforeend", '<%= j(render 'components/card-list', busin
 
 
 
+// Supprime le label "Your list of shops is empty"
+if(document.getElementById('empty-label')) {
+  document.getElementById('empty-label').remove();
+}

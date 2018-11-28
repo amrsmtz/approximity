@@ -32,9 +32,11 @@
     <div class="card-action">
       <%= simple_form_for(business, url: journey_path, method: :post, remote: true) do |f| %>
         <%= f.hidden_field :id %>
-        <%= f.submit "ADD", class: "btn primary-button"%>
+        <%= f.submit "ADD", class: "btn primary-button add" %>
       <% end %>
-      <a href="#" id="map-button" class="btn secondary-button" data-toggle="modal" data-target="#<%=business.id %>">DETAILS</a>
+      <a href="#" id="map-button" class="btn secondary-button" data-toggle="modal" data-target="#<%=business.id %>">
+        DETAILS
+      </a>
       <%= render "components/info_modal", {business: business, is_open: is_open} %>
     </div>
   </div>
