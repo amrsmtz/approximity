@@ -18,11 +18,19 @@ if (document.getElementById('typedjs')) {
 }
 
 // Autocomplete on the start location and end location
+const places = require('places.js');
+
+const addressInputStartBanner = document.getElementById('flat_address_start_banner');
+
+if (addressInputStartBanner) {
+  const placesAutocomplete = places({
+    container: addressInputStartBanner
+  });
+}
 
 const addressInputStart = document.getElementById('flat_address_start');
 
 if (addressInputStart) {
-  const places = require('places.js');
   const placesAutocomplete = places({
     container: addressInputStart
   });
@@ -31,7 +39,6 @@ if (addressInputStart) {
 const addressInputEnd = document.getElementById('flat_address_end');
 
 if (addressInputEnd) {
-  const places = require('places.js');
   const placesAutocomplete = places({
     container: addressInputEnd
   });
@@ -71,7 +78,7 @@ if (mapElement) { // only build a map if there's a div#map to inject into
       map.stop();
       clearInterval(intervalId);
     }
-  }, 1)
+  }, 1);
 
   // Add directions
 
