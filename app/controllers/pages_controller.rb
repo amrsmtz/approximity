@@ -15,6 +15,7 @@ class PagesController < ApplicationController
   def create_journey
     @business = Business.find(params[:business][:id])
     session[:journey] << @business.id
+
     respond_to do |format|
       format.html { redirect_to root_path }
       format.js # <-- will render `app/views/pages/create_journey.js.erb`
