@@ -1,8 +1,10 @@
-<div class="card">
+<div class="card" id="card-<%= business.id %>" data-id="<%= business.id %>">
   <div class="card-image" style="background-image: url('<%= business.photo.html_safe %>');">
     <div class="card-status">
       <% if business.hours[Date.today.wday-1].include? "Closed" %>
         <% is_open = false %>
+      <% elsif business.hours[Date.today.wday-1].include? "24 hours" %>
+        <% is_open = true %>
       <% else %>
         <% today_hours = business.hours[Date.today.wday-1].split(": ").second.split(" – ").map { |hour| Time.parse(hour) }%>
         <% is_open = (Time.now > today_hours[0] && Time.now < today_hours[1]) %>
