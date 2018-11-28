@@ -1,3 +1,9 @@
 var card = document.getElementById('journey-cart');
+var cartItems = document.querySelectorAll('.card-list');
+var ids = []
+
+cartItems.forEach(item => ids.push(item.dataset.id));
+console.log(ids);
+
 card.insertAdjacentHTML("beforeend", '<%= j(render 'components/card-list', business: @business) %>');
 
