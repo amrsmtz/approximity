@@ -17,19 +17,19 @@
   form {
     width: 70%;
   }
-  span {
+  .message-banner {
     font-size: 20px;
     text-align: center;
     color: white;
     margin-bottom: 70px;
-    }
+  }
 }
 .invisible-box {
   height: 100px;
 }
 .element-inline {
   display: flex;
-  width: 100%;
+  width: 60%;
   opacity: 0.9;
   > span {
     width: 50%;

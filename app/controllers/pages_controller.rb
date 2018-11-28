@@ -37,7 +37,7 @@ class PagesController < ApplicationController
     @origin = params[:origin]
     @business_ids = session[:journey]
     @businesses = @business_ids.map { |id| Business.find(id) }
-    coords_array = Business.new(longaddress: @origin).geocode || [-73.567256, 45.5016889]
+    coords_array = Business.new(longaddress: @origin).geocode
 
     @markers = [{ lat: coords_array.first, lng: coords_array.last }]
 
