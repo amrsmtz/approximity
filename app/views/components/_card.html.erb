@@ -3,6 +3,8 @@
     <div class="card-status">
       <% if business.hours[Date.today.wday-1].include? "Closed" %>
         <% is_open = false %>
+      <% elsif business.hours[Date.today.wday-1].include? "24 hours" %>
+        <% is_open = true %>
       <% else %>
         <% today_hours = business.hours[Date.today.wday-1].split(": ").second.split(" – ").map { |hour| Time.parse(hour) }%>
         <% is_open = (Time.now > today_hours[0] && Time.now < today_hours[1]) %>
@@ -30,7 +32,7 @@
     <div class="card-action">
       <%= simple_form_for(business, url: journey_path, method: :post, remote: true) do |f| %>
         <%= f.hidden_field :id %>
-        <%= f.submit "ADD", class: "btn primary-button", disable_with: 'Added' %>
+        <%= f.submit "ADD", class: "btn primary-button"%>
       <% end %>
       <a href="#" id="map-button" class="btn secondary-button" data-toggle="modal" data-target="#<%=business.id %>">DETAILS</a>
       <%= render "components/info_modal", {business: business, is_open: is_open} %>
