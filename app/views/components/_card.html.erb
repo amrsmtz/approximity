@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" id="card-<%= business.id %>" data-id="<%= business.id %>">
   <div class="card-image" style="background-image: url('<%= business.photo.html_safe %>');">
     <div class="card-status">
       <% if business.hours[Date.today.wday-1].include? "Closed" %>
@@ -30,7 +30,7 @@
     <div class="card-action">
       <%= simple_form_for(business, url: journey_path, method: :post, remote: true) do |f| %>
         <%= f.hidden_field :id %>
-        <%= f.submit "ADD", class: "btn primary-button" %>
+        <%= f.submit "ADD", class: "btn primary-button", disable_with: 'Added' %>
       <% end %>
       <a href="#" id="map-button" class="btn secondary-button" data-toggle="modal" data-target="#<%=business.id %>">DETAILS</a>
       <%= render "components/info_modal", {business: business, is_open: is_open} %>
