@@ -1,0 +1,5 @@
+product_name: "Approximity"
+meta_title: "Approximity | Build an itinerary to shop in your neighborhood efficiently"
+meta_description: "Approximity helps you build an itinerary to shop in your neighborhood efficiently."
+meta_image: "cover.png"                       # should exist in `app/assets/images/`
+twitter_account: "@approximity"   # required for Twitter Cards
