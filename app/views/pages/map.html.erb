@@ -16,7 +16,7 @@
     %>
   <%# end %>
   <div id="journey-cart">
-    <% @businesses.each_with_index do |business, i| %>
+    <% @businesses_ordered.each_with_index do |business, i| %>
       <%= render 'components/card-list', business: business, count: i %>
     <% end %>
   </div>
