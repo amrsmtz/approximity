@@ -4,17 +4,18 @@ var businessesHTML = "";
   businessesHTML= businessesHTML + "<%= j(render 'components/card', business: business) %>"
 <% end %>
 
-document.getElementById('flat_address_start').value = document.getElementById('flat_address_start_banner').value
 
 var businessCards = document.getElementById('business-cards')
 businessCards.innerHTML = businessesHTML
 
+if (document.querySelector(".landing-banner") !== null) {
+  // Transfert de la valeur de l'adresse du banner à la barre du bas
+  document.getElementById('flat_address_start').value = document.getElementById('flat_address_start_banner').value
 
-var banner = document.querySelector(".landing-banner");
-
-if (banner !== null) {
+  // Scroll down
   window.scrollTo({ top: window.innerHeight, behavior: "smooth" })
 
+  // Removes the banner after 5 milleseconds
   setTimeout(() => {
     document.querySelector(".landing-banner").remove();
   }, 500)
