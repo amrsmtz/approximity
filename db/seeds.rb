@@ -59,10 +59,11 @@ cheeseid = JSON.parse(cheese_serialized)
     details_serialized = open(details_url).read
     details = JSON.parse(details_serialized)["result"]
     photosarray = details["photos"]
+  photosarray = details["photos"]
 
-    photo_url = nil
+  photo_url = nil
 
-    begin
+  begin
     # Try to find a good photo
     photosarray.each do |foto|
       if foto["html_attributions"].first.include?(details["name"])
@@ -117,11 +118,11 @@ cheeseid = JSON.parse(cheese_serialized)
                        author_name: name,
                        )
       end
-    rescue NoMethodError
-      puts "missing data"
-    end
+  rescue NoMethodError
+    puts "missing data"
   end
 end
+
 
 # Business.find_by(name: "").update(photo: "")
 
@@ -140,4 +141,3 @@ puts 'seeding finished!'
   # faire une requete detail pour chaque id
   # Business.create(...)
 # end
-

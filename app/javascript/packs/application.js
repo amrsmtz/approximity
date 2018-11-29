@@ -10,7 +10,7 @@ window.svg = svg
 
 // Typed js for the Landing page
 
-const colors = ['#00000','#20716a','#c7f2e3','#87e5da','#f7aa00','#20716a']
+const colors = ['#4a4a4a','#4a4a4a','#4a4a4a','#4a4a4a','#4a4a4a','#4a4a4a']
 
 var options = {
   strings: ["BAKERY", "SHOE REPAIR", "BUTCHER"],
