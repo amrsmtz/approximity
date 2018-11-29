@@ -1,13 +1,13 @@
-<div class="card-list" id="card-list-<%= business.id %>" data-id="<%= business.id %>" style="opacity: 0.9">
+<div class="card-list" id="card-list-<%= business.id %>" data-id="<%= business.id %>">
   <div class="card-list-image">
     <img src="<%= business.photo.html_safe %>">
   </div>
   <div class="card-list-content">
     <div class="card-list-content-inline">
-      <h1><%= truncate(business.name, length: 25) %></h1>
+      <h1><%= truncate(business.name, length: 30) %></h1>
        <div id="delete-business">
           <%= link_to journey_path(business_id: business.id), class: 'data-type-button btn btn-negative', method: :delete, remote: true do %>
-            <i class="fas fa-times"></i>
+          <i class="fas fa-times-circle button-delete"></i>
           <% end %>
         </div>
       </a>

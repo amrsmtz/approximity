@@ -1,10 +1,10 @@
 // Buttons
 .button-call-to-action {
-  background: $orange;
+  background: $red;
   color: white;
 }
 .button-call-to-action:hover {
-  background: $light-orange;
+  background-color: $red-hover;
   color: white;
 }
 .primary-button {
@@ -32,4 +32,10 @@
 .font-awesome-button:hover {
   background: none;
   color: $orange;
+}
+.button-delete {
+  color: $red;
+}
+.button-delete:hover {
+  color: $red-hover;
 }

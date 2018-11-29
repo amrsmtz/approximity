@@ -3,12 +3,12 @@
 }
 .map-content {
   position: absolute;
-  top: 25px;
-  right: 30px;
-  width: 25%;
-  input {
-    background-color: white;
-  }
+  top: 15px;
+  right: 15px;
+  width: 30%;
+  border-radius: 2px;
+  padding: 15px;
+  background-color: rgba(0,0,0,0.6)
 }
 #journey-cart {
   margin-top: 30px;
