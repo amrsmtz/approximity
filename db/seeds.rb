@@ -18,8 +18,8 @@ fruitsvegetable = "https://maps.googleapis.com/maps/api/place/textsearch/json?qu
 hairdresser = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=hair+dresser+in+montreal&#{parameters}"
 flowers = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=flowers+in+montreal&#{parameters}"
 cheese = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=cheese+in+montreal&#{parameters}"
-ids = []
-categories = [bakery, shoemaker, butcher, drycleaner, library, fruitsvegetable, hairdresser, flowers, cheese ]
+
+categories = ['bakery', 'shoemaker', 'butcher', 'drycleaner', 'library', 'fruitsvegetable', 'hairdresser', 'flowers', 'cheese' ]
 
 bakery_serialized = open(bakery).read
 bakeryid = JSON.parse(bakery_serialized)
@@ -49,11 +49,10 @@ cheese_serialized = open(cheese).read
 cheeseid = JSON.parse(cheese_serialized)
 
 [bakeryid["results"], shoemakerid["results"], butcherid["results"], drycleanerid["results"], libraryid["results"], fruitsvegetableid["results"], hairdresserid["results"], flowersid["results"], cheeseid["results"]].each_with_index do |results, i|
+  ids = []
   results.each do |result|
     ids << result["place_id"]
   end
-
-  category = categories[i]
 
   ids.each do |id|
     details_url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=#{id}&#{parameters}"
@@ -86,7 +85,7 @@ cheeseid = JSON.parse(cheese_serialized)
       phone = details["formatted_phone_number"]
       ratings = details["rating"]
       hours = details["opening_hours"]["weekday_text"]
-      category = category #details["types"][0]
+      puts category = categories[i] #details["types"][0]
       website = details["website"]
       price_level = details["price_level"]
       latitude = details["geometry"]["location"]["lat"]

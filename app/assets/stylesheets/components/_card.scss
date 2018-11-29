@@ -6,13 +6,14 @@
     font-size: 13px;
     margin: 0;
   }
+  box-shadow: 0 0 20px rgba(120, 120, 120, 0.1);
 }
 .card-image {
   width: 100%;
   height: 175px;
   background-size: cover;
   position: relative;
-  border-radius: 2px;
+  border-radius: 2px 2px 0 0;
 }
 .card-status {
   position: absolute;
@@ -23,6 +24,8 @@
 //   text-decoration: underline;
 // }
 .card-content {
+  padding: 15px;
+  padding-top: 0;
   h1 {
     font-weight: bold;
     font-size: 16px;
