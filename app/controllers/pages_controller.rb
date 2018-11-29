@@ -1,6 +1,7 @@
 require 'open-uri'
 
 class PagesController < ApplicationController
+
   def home
     if params[:query].present?
       @businesses = Business.search_by_name_and_category(params[:query])
@@ -42,22 +43,27 @@ class PagesController < ApplicationController
     @origin = params[:origin]
     @business_ids = session[:journey]
     @businesses = @business_ids.map { |id| Business.find(id) }
+    @colors = ['#20716a','#c7f2e3','#87e5da','#f7aa00','#20716a']
+
     coords_array = Business.new(longaddress: @origin).geocode || [-73.567256, 45.5016889]
 
-    @markers = [{ lng: coords_array.last, lat: coords_array.first }]
+    @markers = [ { marker: {lng: coords_array.last, lat: coords_array.first } } ]
     @businesses.each do |business|
-
-      @markers << { lat: business.latitude, lng: business.longitude, popHTML: render_to_string(partial: "components/popup", locals: { business: business }) }
+      @markers << {  marker: {lng: business.longitude, lat: business.latitude}  }
     end
-    # @markers << { lng: coords_array.last, lat: coords_array.first }
-    @json_string = @markers.map {|marker| marker.values.join(",")}.join(";")
+
+    @json_string = @markers.map {|marker| marker[:marker].values.join(",")}.join(";")
 
     @optimization_url = "https://api.mapbox.com/optimized-trips/v1/mapbox/walking/#{@json_string}?access_token=#{ENV['MAPBOX_API_KEY']}&source=first&roundtrip=true"
 
     @optimized_route = JSON.parse(open(@optimization_url).read)
-    @markers = @optimized_route['waypoints'].map do |waypoint|
-      { lng: waypoint['location'][0], lat: waypoint['location'][1], index: waypoint["waypoint_index"] }
 
+    @markers = @optimized_route['waypoints'].each_with_index.map do |waypoint, i|
+      if i == 0
+        { lng: waypoint['location'][0], lat: waypoint['location'][1]}
+      else
+        { lng: waypoint['location'][0], lat: waypoint['location'][1] , index: waypoint["waypoint_index"], popHTML: render_to_string(partial: "components/popup", locals: { business: @businesses[i - 1] })}
+      end
     end
   end
 end
