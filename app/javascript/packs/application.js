@@ -7,6 +7,8 @@ import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css'
 
 // Typed js for the Landing page
 
+const colors = ['#00000','#20716a','#c7f2e3','#87e5da','#f7aa00','#20716a']
+
 var options = {
   strings: ["BAKERY", "SHOE REPAIR", "BUTCHER"],
   typeSpeed: 80,
@@ -62,6 +64,7 @@ if (mapElement) { // only build a map if there's a div#map to inject into
   const bounds = new mapboxgl.LngLatBounds();
 
   console.log(markers);
+  let j = 0;
 
   markers.forEach((marker, i) => {
     // set the boundaries of the map
@@ -71,7 +74,8 @@ if (mapElement) { // only build a map if there's a div#map to inject into
     var el = document.createElement('div');
     el.className = 'marker';
     el.innerHTML += '<i class="fas fa-map-marker"></i>'
-    // el.style.backgroundImage = 'url(https://i.imgur.com/MK4NUzI.png)';
+
+    el.style.color = colors[j];
 
     // make a marker for each feature and add to the map
     if (i !== 0) {
@@ -84,6 +88,9 @@ if (mapElement) { // only build a map if there's a div#map to inject into
       .setPopup(popup)
       .addTo(map);
     }
+    console.log(j + 2);
+
+    j = j + 1;
   });
 
 // map.addSource('route', {

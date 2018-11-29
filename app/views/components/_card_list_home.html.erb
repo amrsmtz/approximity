@@ -2,7 +2,7 @@
   <div class="card-list-image">
     <img src="<%= business.photo.html_safe %>">
   </div>
-  <div class="card-list-content" style="background-color: <%= @colors[count] %>">
+  <div class="card-list-content">
     <div class="card-list-content-inline">
       <h1><%= truncate(business.name, length: 25) %></h1>
        <div id="delete-business">
