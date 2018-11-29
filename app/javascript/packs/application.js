@@ -7,7 +7,7 @@ import '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions.css'
 
 // Typed js for the Landing page
 
-const colors = ['#00000','#20716a','#c7f2e3','#87e5da','#f7aa00','#20716a']
+const colors = ['#4a4a4a','#4a4a4a','#4a4a4a','#4a4a4a','#4a4a4a','#4a4a4a']
 
 var options = {
   strings: ["BAKERY", "SHOE REPAIR", "BUTCHER"],
@@ -73,9 +73,9 @@ if (mapElement) { // only build a map if there's a div#map to inject into
     // create HTML pins for the markers
     var el = document.createElement('div');
     el.className = 'marker';
-    el.innerHTML += '<i class="fas fa-map-marker"></i>'
+    el.innerHTML += '<i class="fas fa-circle"></i>'
 
-    el.style.color = colors[j];
+    // el.style.color = colors[j];
 
     // make a marker for each feature and add to the map
     if (i !== 0) {
