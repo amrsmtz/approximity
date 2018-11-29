@@ -43,7 +43,7 @@ class PagesController < ApplicationController
     @origin = params[:origin]
     @business_ids = session[:journey]
     @businesses = @business_ids.map { |id| Business.find(id) }
-    @colors = ['#20716a','#c7f2e3','#87e5da','#f7aa00','#20716a']
+    @colors = ['#fff','#fff','#fff','#fff','#fff']
 
     coords_array = Business.new(longaddress: @origin).geocode || [-73.567256, 45.5016889]
 
