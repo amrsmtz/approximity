@@ -18,11 +18,14 @@ class PagesController < ApplicationController
 
   def create_journey
     @business = Business.find(params[:business][:id])
-    session[:journey] << @business.id
+    if !session[:journey].include?(@business.id)
+      session[:journey] << @business.id
+    end
 
     respond_to do |format|
       format.html { redirect_to root_path }
-      format.js # <-- will render `app/views/pages/create_journey.js.erb`
+      format.js
+      # <-- will render `app/views/pages/create_journey.js.erb`
     end
   end
 
