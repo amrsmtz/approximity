@@ -40,29 +40,33 @@ class PagesController < ApplicationController
   end
 
   def map
-    @origin = params[:origin]
-    @business_ids = session[:journey]
-    @businesses = @business_ids.map { |id| Business.find(id) }
-    @colors = ['#fff','#fff','#fff','#fff','#fff']
+    if session[:journey].empty? || params[:origin].blank?
+      redirect_to root_path
+    else
+      @origin = params[:origin]
+      @business_ids = session[:journey]
+      @businesses = @business_ids.map { |id| Business.find(id) }
+      @colors = ['#fff','#fff','#fff','#fff','#fff']
 
-    coords_array = Business.new(longaddress: @origin).geocode || [-73.567256, 45.5016889]
+      coords_array = Business.new(longaddress: @origin).geocode || [-73.567256, 45.5016889]
 
-    @markers = [ { marker: {lng: coords_array.last, lat: coords_array.first } } ]
-    @businesses.each do |business|
-      @markers << {  marker: {lng: business.longitude, lat: business.latitude}  }
-    end
+      @markers = [ { marker: {lng: coords_array.last, lat: coords_array.first } } ]
+      @businesses.each do |business|
+        @markers << {  marker: {lng: business.longitude, lat: business.latitude}  }
+      end
 
-    @json_string = @markers.map {|marker| marker[:marker].values.join(",")}.join(";")
+      @json_string = @markers.map {|marker| marker[:marker].values.join(",")}.join(";")
 
-    @optimization_url = "https://api.mapbox.com/optimized-trips/v1/mapbox/walking/#{@json_string}?access_token=#{ENV['MAPBOX_API_KEY']}&source=first&roundtrip=true"
+      @optimization_url = "https://api.mapbox.com/optimized-trips/v1/mapbox/walking/#{@json_string}?access_token=#{ENV['MAPBOX_API_KEY']}&source=first&roundtrip=true"
 
-    @optimized_route = JSON.parse(open(@optimization_url).read)
+      @optimized_route = JSON.parse(open(@optimization_url).read)
 
-    @markers = @optimized_route['waypoints'].each_with_index.map do |waypoint, i|
-      if i == 0
-        { lng: waypoint['location'][0], lat: waypoint['location'][1]}
-      else
-        { lng: waypoint['location'][0], lat: waypoint['location'][1] , index: waypoint["waypoint_index"], popHTML: render_to_string(partial: "components/popup", locals: { business: @businesses[i - 1] })}
+      @markers = @optimized_route['waypoints'].each_with_index.map do |waypoint, i|
+        if i == 0
+          { lng: waypoint['location'][0], lat: waypoint['location'][1]}
+        else
+          { lng: waypoint['location'][0], lat: waypoint['location'][1] , index: waypoint["waypoint_index"], popHTML: render_to_string(partial: "components/popup", locals: { business: @businesses[i - 1] })}
+        end
       end
     end
   end
