@@ -3,13 +3,16 @@
     font-size: 16px;
     font-weight: bold;
     margin: 0;
+    margin-bottom: 4px;
   }
   p {
     font-size: 12px;
     margin: 0;
-    color: #838383;
+    // color: #838383;
   }
 }
 .mapboxgl-popup-content {
-  padding: 10px !important;
+  opacity: 0.9 !important;
+  padding: 12px !important;
+  padding-right: 30px !important;
 }

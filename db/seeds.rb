@@ -18,7 +18,8 @@ fruitsvegetable = "https://maps.googleapis.com/maps/api/place/textsearch/json?qu
 hairdresser = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=hair+dresser+in+montreal&#{parameters}"
 flowers = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=flowers+in+montreal&#{parameters}"
 cheese = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=cheese+in+montreal&#{parameters}"
-ids = []
+
+categories = ['bakery', 'shoemaker', 'butcher', 'drycleaner', 'library', 'fruitsvegetable', 'hairdresser', 'flowers', 'cheese' ]
 
 bakery_serialized = open(bakery).read
 bakeryid = JSON.parse(bakery_serialized)
@@ -47,73 +48,76 @@ flowersid = JSON.parse(flowers_serialized)
 cheese_serialized = open(cheese).read
 cheeseid = JSON.parse(cheese_serialized)
 
-(bakeryid["results"] + shoemakerid["results"] + butcherid["results"] + drycleanerid["results"] + libraryid["results"] + fruitsvegetableid["results"] + hairdresserid["results"] + flowersid["results"] + cheeseid["results"]).each do |result|
-  ids << result["place_id"]
-end
+[bakeryid["results"], shoemakerid["results"], butcherid["results"], drycleanerid["results"], libraryid["results"], fruitsvegetableid["results"], hairdresserid["results"], flowersid["results"], cheeseid["results"]].each_with_index do |results, i|
+  ids = []
+  results.each do |result|
+    ids << result["place_id"]
+  end
 
-ids.each do |id|
-  details_url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=#{id}&#{parameters}"
-  details_serialized = open(details_url).read
-  details = JSON.parse(details_serialized)["result"]
+  ids.each do |id|
+    details_url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=#{id}&#{parameters}"
+    details_serialized = open(details_url).read
+    details = JSON.parse(details_serialized)["result"]
+    photosarray = details["photos"]
   photosarray = details["photos"]
 
   photo_url = nil
 
   begin
-  # Try to find a good photo
-  photosarray.each do |foto|
-    if foto["html_attributions"].first.include?(details["name"])
-      fotoref = foto["photo_reference"]
+    # Try to find a good photo
+    photosarray.each do |foto|
+      if foto["html_attributions"].first.include?(details["name"])
+        fotoref = foto["photo_reference"]
+        photo_url = open("https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{fotoref}&#{parameters}").base_uri.to_s
+      end
+    end
+
+    # If you cannot, take the first one
+    if photo_url.nil?
+      fotoref = photosarray.first["photo_reference"]
       photo_url = open("https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{fotoref}&#{parameters}").base_uri.to_s
     end
-  end
 
-  # If you cannot, take the first one
-  if photo_url.nil?
-    fotoref = photosarray.first["photo_reference"]
-    photo_url = open("https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=#{fotoref}&#{parameters}").base_uri.to_s
-  end
+      # Taking info from Google Places
 
-    # Taking info from Google Places
-
-    name = details["name"]
-    shortaddress = details["vicinity"]
-    longaddress = details["formatted_address"]
-    phone = details["formatted_phone_number"]
-    ratings = details["rating"]
-    hours = details["opening_hours"]["weekday_text"]
-    category = details["types"][0]
-    website = details["website"]
-    price_level = details["price_level"]
-    latitude = details["geometry"]["location"]["lat"]
-    longitude = details["geometry"]["location"]["lng"]
-    # Creating the business in the db
-    business = Business.create!(
-      name: name,
-      shortaddress: shortaddress,
-      longaddress: longaddress,
-      phone: phone,
-      ratings: ratings,
-      hours: hours,
-      category: category,
-      website: website,
-      price_level: price_level,
-      latitude: latitude,
-      longitude: longitude,
-      photo: photo_url,
-      )
-    # Implementing the reviews
-    three_reviews = details["reviews"]
-    three_reviews.first(5).each do |review|
-      rating = review["rating"]
-      text = review["text"]
-      name = review["author_name"]
-      Review.create!(rating: rating,
-                     business: business,
-                     content: text,
-                     author_name: name,
-                     )
-    end
+      name = details["name"]
+      shortaddress = details["vicinity"]
+      longaddress = details["formatted_address"]
+      phone = details["formatted_phone_number"]
+      ratings = details["rating"]
+      hours = details["opening_hours"]["weekday_text"]
+      puts category = categories[i] #details["types"][0]
+      website = details["website"]
+      price_level = details["price_level"]
+      latitude = details["geometry"]["location"]["lat"]
+      longitude = details["geometry"]["location"]["lng"]
+      # Creating the business in the db
+      business = Business.create!(
+        name: name,
+        shortaddress: shortaddress,
+        longaddress: longaddress,
+        phone: phone,
+        ratings: ratings,
+        hours: hours,
+        category: category,
+        website: website,
+        price_level: price_level,
+        latitude: latitude,
+        longitude: longitude,
+        photo: photo_url,
+        )
+      # Implementing the reviews
+      three_reviews = details["reviews"]
+      three_reviews.first(5).each do |review|
+        rating = review["rating"]
+        text = review["text"]
+        name = review["author_name"]
+        Review.create!(rating: rating,
+                       business: business,
+                       content: text,
+                       author_name: name,
+                       )
+      end
   rescue NoMethodError
     puts "missing data"
   end

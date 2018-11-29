@@ -63,9 +63,12 @@ class PagesController < ApplicationController
 
       @markers = @optimized_route['waypoints'].each_with_index.map do |waypoint, i|
         if i == 0
-          { lng: waypoint['location'][0], lat: waypoint['location'][1]}
+        { lng: waypoint['location'][0], lat: waypoint['location'][1]}
         else
-          { lng: waypoint['location'][0], lat: waypoint['location'][1] , index: waypoint["waypoint_index"], popHTML: render_to_string(partial: "components/popup", locals: { business: @businesses[i - 1] })}
+        { lng: waypoint['location'][0], lat: waypoint['location'][1] , index: waypoint["waypoint_index"],
+          popHTML: render_to_string(partial: "components/popup", locals: { business: @businesses[i - 1] }),
+          category: @businesses[i - 1].category
+        }
         end
       end
     end

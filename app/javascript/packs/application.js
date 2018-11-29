@@ -69,23 +69,30 @@ if (mapElement) { // only build a map if there's a div#map to inject into
   markers.forEach((marker, i) => {
     // set the boundaries of the map
     bounds.extend([marker.lng, marker.lat]);
-
+    // console.log(marker);
     // create HTML pins for the markers
     var el = document.createElement('div');
     el.className = 'marker';
-    el.innerHTML += '<i class="fas fa-circle"></i>'
+    //el.innerHTML = '<i class="fas fa-map-marker"></i><br>' ;//'<i class="fas fa-map-marker"></i>';
+    // el.innerHTML += `${marker.category}`
 
     // el.style.color = colors[j];
 
     // make a marker for each feature and add to the map
     if (i !== 0) {
-      var popup = new mapboxgl
-        .Popup({ offset: 25 })
-        .setHTML(marker.popHTML);
+      // var popup = new mapboxgl
+      //   .Popup({ offset: 25,
+      //     closeOnClick: false })
+      //   .setHTML(marker.popHTML);
+
+      var popup = new mapboxgl.Popup({closeOnClick: false})
+        .setLngLat([marker.lng, marker.lat])
+        .setHTML(marker.popHTML)
+        .addTo(map);
 
       new mapboxgl.Marker(el)
       .setLngLat([marker.lng, marker.lat])
-      .setPopup(popup)
+      // .setPopup(popup)
       .addTo(map);
     }
     console.log(j + 2);
@@ -141,7 +148,6 @@ if (mapElement) { // only build a map if there's a div#map to inject into
 
     directions.setOrigin([markers[0].lng, markers[0].lat]);
     markers.slice(1).forEach((marker) => {
-      console.log(marker);
       directions.addWaypoint(marker.index - 1, [marker.lng, marker.lat]);
     });
     directions.setDestination([markers[0].lng, markers[0].lat]);
