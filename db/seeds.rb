@@ -118,8 +118,9 @@ cheeseid = JSON.parse(cheese_serialized)
                        author_name: name,
                        )
       end
-  rescue NoMethodError
-    puts "missing data"
+    rescue NoMethodError
+      puts "missing data"
+    end
   end
 end
 
