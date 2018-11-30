@@ -10,6 +10,7 @@
         class: "form-control form-grey",
         placeholder: "Find a business to add to the journey"
       %>
+      <%= hidden_field_tag 'origin' %>
     <% end %>
     <div class="search-business-cards" id="business-cards">
       <% @businesses.each do |b|  %>

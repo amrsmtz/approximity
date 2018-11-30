@@ -4,9 +4,9 @@ class PagesController < ApplicationController
 
   def home
     if params[:query].present?
-      @businesses = Business.search_by_name_and_category(params[:query])
+      @businesses = Business.near(params[:origin],100).search_by_name_and_category(params[:query]).includes(:reviews).limit(12)
     else
-      @businesses = Business.all
+      @businesses = Business.near(params[:origin], 100).includes(:reviews).limit(12)
     end
 
     @origin = params[:origin]
@@ -70,7 +70,7 @@ class PagesController < ApplicationController
           @businesses_ordered << { business: @businesses[i - 1], index: waypoint["waypoint_index"] }
 
           { lng: waypoint['location'][0], lat: waypoint['location'][1] , index: waypoint["waypoint_index"],
-            popHTML: render_to_string(partial: "components/popup", locals: { business: @businesses[i - 1] }),
+            popHTML: render_to_string(partial: "components/popup", locals: { business: @businesses[i - 1], index: waypoint["waypoint_index"] }),
             category: @businesses[i - 1].category
           }
         end

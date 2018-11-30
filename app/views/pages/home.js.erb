@@ -11,6 +11,7 @@ businessCards.innerHTML = businessesHTML
 if (document.querySelector(".landing-banner") !== null) {
   // Transfert de la valeur de l'adresse du banner à la barre du bas
   document.getElementById('flat_address_start').value = document.getElementById('flat_address_start_banner').value
+  document.getElementById('origin').value = document.getElementById('flat_address_start_banner').value
 
   // Scroll down
   window.scrollTo({ top: window.innerHeight, behavior: "smooth" })
