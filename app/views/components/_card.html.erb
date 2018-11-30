@@ -23,7 +23,13 @@
         <%= business.shortaddress.chomp(", Montréal").chomp(", Montreal") %>
       </p>
       <p>
-        <%= business.phone %>
+        <% if business.phone.nil? %>
+          Phone number unavailable
+          <br>
+        <% else %>
+          <%= business.phone %>
+          <br>
+        <% end %>
       </p>
     </div>
     <!-- <p class="card-description"> -->
