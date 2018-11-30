@@ -5,8 +5,10 @@ class PagesController < ApplicationController
   def home
     if params[:query].present?
       @businesses = Business.near(params[:origin],100).search_by_name_and_category(params[:query]).includes(:reviews).limit(12)
-    else
+    elsif params[:origin].present?
       @businesses = Business.near(params[:origin], 100).includes(:reviews).limit(12)
+    else
+      @businesses = Business.includes(:reviews).limit(12)
     end
 
     @origin = params[:origin]

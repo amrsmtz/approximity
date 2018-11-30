@@ -13,7 +13,7 @@
     </div>
   </div>
   <div class="card-content">
-    <h1><%= truncate(business.name, length: 50) %> (<%= (business.distance_to(@origin) * 1000).to_i %> m)</h1>
+    <h1><%= truncate(business.name, length: 50) %> <%# (business.distance_to(@origin) * 1000).to_i %></h1>
     <div class="card-rating">
       <%= render 'components/stars', business: business %>
       <p><%= business.ratings %></p>
