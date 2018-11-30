@@ -125,7 +125,7 @@ cheeseid = JSON.parse(cheese_serialized)
 end
 
 
-# Business.find_by(name: "").update(photo: "")
+Business.find_by(name: "Astra The Dry Cleaner").destroy
 
 
 puts 'seeding finished!'
