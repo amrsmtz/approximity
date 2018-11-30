@@ -7,7 +7,6 @@
     margin: 0;
   }
   box-shadow: 0 0 20px rgba(120, 120, 120, 0.1);
-  height: 336px;
 }
 .card-image {
   width: 100%;
@@ -33,6 +32,9 @@
     margin-top: 17px;
     margin-bottom: 5px;
   }
+}
+.card-content-text {
+  height: 98px;
 }
 .card-rating {
   color: $yellow;

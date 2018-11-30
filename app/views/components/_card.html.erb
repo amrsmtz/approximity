@@ -13,24 +13,26 @@
     </div>
   </div>
   <div class="card-content">
+    <div class="card-content-text">
       <h1><%= truncate(business.name, length: 50) %></h1>
-    <div class="card-rating">
-      <%= render 'components/stars', business: business %>
-      <p><%= business.ratings %></p>
-    </div>
-    <div>
-      <p>
-        <%= business.shortaddress.chomp(", Montréal").chomp(", Montreal") %>
-      </p>
-      <p>
-        <% if business.phone.nil? %>
-          Phone number unavailable
-          <br>
-        <% else %>
-          <%= business.phone %>
-          <br>
-        <% end %>
-      </p>
+      <div class="card-rating">
+        <%= render 'components/stars', business: business %>
+        <p><%= business.ratings %></p>
+      </div>
+      <div>
+        <p>
+          <%= business.shortaddress.chomp(", Montréal").chomp(", Montreal") %>
+        </p>
+        <p>
+          <% if business.phone.nil? %>
+            Phone number unavailable
+            <br>
+          <% else %>
+            <%= business.phone %>
+            <br>
+          <% end %>
+        </p>
+      </div>
     </div>
     <!-- <p class="card-description"> -->
       <%#= truncate(business.reviews.first.content, length: 70) %>
