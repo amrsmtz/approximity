@@ -20,6 +20,7 @@ if (document.getElementById('typedjs')) {
 }
 
 // Autocomplete on the start location and end location
+
 const places = require('places.js');
 
 const addressInputStartBanner = document.getElementById('flat_address_start_banner');
